@@ -9,9 +9,9 @@
         <property name="jndiName" value="java:comp/env/jdbc/DB_LIBRARY" />
     </bean>
 
-    <bean id="abstractAction"
+    <bean id="abstractWebapp"
           class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-        <property name="targetClass" value="org.projet.libraryservice.webapp.action.AbstractAction" />
+        <property name="targetClass" value="org.projet.libraryservice.webapp.AbstractionWebapp" />
         <property name="targetMethod" value="setManagerFactory" />
         <property name="arguments" ref="managerFactory" />
     </bean>
