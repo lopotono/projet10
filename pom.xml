@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- =============================================================== -->
+  <!-- Informations du projet -->
+  <!-- =============================================================== -->
+  <!-- ===== Informations Maven ===== -->
+  <groupId>org.projet.libraryservice</groupId>
+  <artifactId>libraryservice</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <!-- ===== Informations générales ===== -->
+  <name>libraryservice</name>
+  <url>http://maven.apache.org</url>
+
+  <!-- =============================================================== -->
+  <!-- Properties -->
+  <!-- =============================================================== -->
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <spring.version>4.3.11.RELEASE</spring.version>
+  </properties>
+
+  <!-- =============================================================== -->
+  <!-- Modules -->
+  <!-- =============================================================== -->
+  <modules>
+    <module>libraryservice-webapp</module>
+    <module>libraryservice-business</module>
+    <module>libraryservice-consumer</module>
+    <module>libraryservice-model</module>
+  </modules>
+
+  <!-- =============================================================== -->
+  <!-- Gestion des dépendances -->
+  <!-- =============================================================== -->
+  <dependencyManagement>
+    <dependencies>
+      <!-- ===== Modules ===== -->
+      <dependency>
+        <groupId>org.projet.libraryservice</groupId>
+        <artifactId>libraryservice-webapp</artifactId>
+        <version>1.0-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.projet.libraryservice</groupId>
+        <artifactId>libraryservice-business</artifactId>
+        <version>1.0-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.projet.libraryservice</groupId>
+        <artifactId>libraryservice-consumer</artifactId>
+        <version>1.0-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.projet.libraryservice</groupId>
+        <artifactId>libraryservice-model</artifactId>
+        <version>1.0-SNAPSHOT</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-framework-bom</artifactId>
+        <version>${spring.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.struts</groupId>
+        <artifactId>struts2-bom</artifactId>
+        <version>2.5.14.1</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <!-- Drivers JDBC PostgreSQL -->
+      <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>9.4.1212</version>
+        <scope>runtime</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+</project>
