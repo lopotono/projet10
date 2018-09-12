@@ -1,6 +1,5 @@
 package org.projet.libraryservice.webapp;
 
-import com.opensymphony.xwork2.ActionSupport;
 import org.projet.libraryservice.model.Livre;
 
 import javax.jws.WebMethod;
@@ -8,7 +7,7 @@ import javax.jws.WebService;
 import java.util.List;
 
 @WebService(serviceName = "ListeLivres")
-public class ListeLivres extends AbstractionWebapp {
+public class ListeLivres extends AbstractWebapp {
 
     private String listeLivres;
 
@@ -24,6 +23,6 @@ public class ListeLivres extends AbstractionWebapp {
     public String execute() {
         List<Livre> list = getManagerFactory().getLivreManager().getLivres();
         setListeLivres(list.get(0).getTitre());
-        return ActionSupport.SUCCESS;
+        return execute();
     }
 }
