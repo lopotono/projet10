@@ -10,4 +10,8 @@ public class LivreManagerImpl extends AbstractManager implements LivreManager {
     public List<Livre> getLivres() {
         return getDaoFactory().getLivreDao().getLivres();
     }
+
+	public List<Livre> getSearchLivre(String titre) {
+		return getDaoFactory().getLivreDao().getSearchLivre(titre);
+	}
 }
