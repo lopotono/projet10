@@ -7,9 +7,7 @@
     <artifactId>libraryservice</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
-  <groupId>org.projet.libraryservice</groupId>
   <artifactId>libraryservice-business</artifactId>
-  <version>1.0-SNAPSHOT</version>
   <name>libraryservice-business</name>
   <url>http://maven.apache.org</url>
   <properties>
@@ -23,13 +21,13 @@
     <!-- ===== Modules ===== -->
     <dependency>
       <groupId>org.projet.libraryservice</groupId>
-      <artifactId>libraryservice-model</artifactId>
+      <artifactId>libraryservice-consumer</artifactId>
     </dependency>
     <dependency>
       <groupId>org.projet.libraryservice</groupId>
-      <artifactId>libraryservice-consumer</artifactId>
+      <artifactId>libraryservice-model</artifactId>
     </dependency>
-
+    
     <!-- ===== Bibliothèques tierces ===== -->
     <dependency>
       <groupId>junit</groupId>
