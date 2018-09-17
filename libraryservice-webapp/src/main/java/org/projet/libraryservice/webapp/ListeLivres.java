@@ -9,20 +9,28 @@ import java.util.List;
 @WebService(serviceName = "ListeLivres")
 public class ListeLivres extends AbstractWebapp {
 
-    private String listeLivres;
+	private int livreid;
+	private List<Livre> listLivre;
 
-    public String getListeLivres() {
-        return listeLivres;
-    }
+	public int getLivreid() {
+		return livreid;
+	}
 
-    public void setListeLivres(String listeLivres) {
-        this.listeLivres = listeLivres;
-    }
+	public void setLivreid(int livreid) {
+		this.livreid = livreid;
+	}
 
-    @WebMethod
-    public String execute() {
-        List<Livre> list = getManagerFactory().getLivreManager().getLivres();
-        setListeLivres(list.get(0).getTitre());
-        return execute();
-    }
+	public List<Livre> getListLivre() {
+		return listLivre;
+	}
+
+	public void setListLivre(List<Livre> listLivre) {
+		this.listLivre = listLivre;
+	}
+
+	@WebMethod
+	public List<Livre> doListLivre() {
+		listLivre = getManagerFactory().getLivreManager().getLivres();
+		return listLivre;
+	}
 }
