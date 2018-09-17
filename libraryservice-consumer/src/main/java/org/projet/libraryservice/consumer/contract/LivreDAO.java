@@ -7,4 +7,6 @@ import java.util.List;
 public interface LivreDAO {
 
     List<Livre> getLivres();
+    
+    List<Livre> getSearchLivre(String titre);
 }
