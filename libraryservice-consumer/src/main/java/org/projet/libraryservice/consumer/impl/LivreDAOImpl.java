@@ -6,9 +6,13 @@ import org.projet.libraryservice.model.Livre;
 
 import java.util.List;
 
-public class LivreDAOImpl extends AbstractDAO implements LivreDAO {
+public class LivreDAOImpl extends AbstractDaoImpl implements LivreDAO {
+	
+	public LivreDAOImpl() {
+		
+	}
 
-    public List<Livre> getLivres() {
+	public List<Livre> getLivres() {
 
         String vSQL = "SELECT * FROM livre ORDER BY titre";
 
@@ -18,4 +22,15 @@ public class LivreDAOImpl extends AbstractDAO implements LivreDAO {
 
         return vListLivres;
     }
+
+	public List<Livre> getSearchLivre(String titre) {
+		
+		String vSQL = "SELECT * FROM livre WHERE titre LIKE '%" + titre + "%'";
+		
+		LivreRowMapper vRowMapper = new LivreRowMapper();
+
+        List<Livre> livres = getJdbcTemplate().query(vSQL, vRowMapper);
+	
+		return livres;
+	}
 }
