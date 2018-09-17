@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns="http://www.springframework.org/schema/beans"
-       xsi:schemaLocation="
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="
             http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="dataSourceLibrary" class="org.springframework.jndi.JndiObjectFactoryBean">
-        <property name="jndiName" value="java:comp/env/jdbc/DB_LIBRARY" />
-    </bean>
+	<bean id="dataSourceLibrary"
+		class="org.apache.commons.dbcp2.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName"
+			value="org.postgresql.Driver" />
+		<property name="url"
+			value="jdbc:postgresql://localhost:5432/db_library" />
+		<property name="username" value="postgres" />
+		<property name="password" value="innelec" />
+	</bean>
 
-    <bean id="abstractWebapp"
-          class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-        <property name="targetClass" value="org.projet.libraryservice.webapp.AbstractWebapp" />
-        <property name="targetMethod" value="setManagerFactory" />
-        <property name="arguments" ref="managerFactory" />
-    </bean>
+	<bean id="abstractWebapp"
+		class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetClass"
+			value="org.projet.libraryservice.webapp.AbstractWebapp" />
+		<property name="targetMethod" value="setManagerFactory" />
+		<property name="arguments" ref="managerFactory" />
+	</bean>
 </beans>
