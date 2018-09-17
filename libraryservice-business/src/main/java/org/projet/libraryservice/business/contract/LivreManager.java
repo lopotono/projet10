@@ -7,4 +7,6 @@ import java.util.List;
 public interface LivreManager {
 
     List<Livre> getLivres();
+    
+    List<Livre> getSearchLivre(String titre);
 }
