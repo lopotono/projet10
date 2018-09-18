@@ -5,4 +5,6 @@ import org.projet.libraryservice.model.User;
 public interface UserDAO {
 	
 	User getUser(String name, String password);
+	
+	User getUsers(int id);
 }
