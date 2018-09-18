@@ -18,4 +18,15 @@ public class UserDAOImpl extends AbstractDaoImpl implements UserDAO {
 
 		return user.get(0);
 	}
+
+	public User getUsers(int id) {
+
+		String vSQL = "SELECT * FROM user WHERE id_user=" + id;
+		
+		UserRowMapper vRowMapper = new UserRowMapper();
+		
+		List<User> vListUser = getJdbcTemplate().query(vSQL, vRowMapper);
+		
+		return vListUser.get(0);
+	}
 }
