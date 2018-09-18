@@ -1,6 +1,5 @@
 package org.projet.libraryservice.consumer.impl.rowmapper;
 
-
 import org.projet.libraryservice.model.Livre;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -14,12 +13,11 @@ public class LivreRowMapper implements RowMapper<Livre> {
         vLivre.setLivreid(pRS.getInt("id_livre"));
         vLivre.setTitre(pRS.getString("titre"));
         vLivre.setAuteur(pRS.getString("auteur"));
-        vLivre.setIsbn(pRS.getInt("isbn"));
+        vLivre.setIsbn(pRS.getString("isbn"));
         vLivre.setGenre(pRS.getString("genre"));
         vLivre.setDisponible(pRS.getBoolean("disponible"));
         vLivre.setNbexemplaire(pRS.getInt("nombre_exemplaire"));
         vLivre.setEditeur(pRS.getString("editeur"));
-        vLivre.setImage(pRS.getString("image"));
         return vLivre;
     }
 }
