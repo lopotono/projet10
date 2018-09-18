@@ -9,4 +9,6 @@ public interface LivreManager {
     List<Livre> getLivres();
     
     List<Livre> getSearchLivre(String titre);
+    
+    List<Livre> getLivresDispo(boolean livredispo);
 }
