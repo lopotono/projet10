@@ -1,16 +1,15 @@
 package org.projet.libraryservice.model;
 
 public class Livre {
-
+	
     private int livreid;
     private String titre;
     private String auteur;
-    private int isbn;
+    private String isbn;
     private String genre;
     private boolean disponible;
     private int nbexemplaire;
     private String editeur;
-    private String image;
 
     public int getLivreid() {
         return livreid;
@@ -36,11 +35,11 @@ public class Livre {
         this.auteur = auteur;
     }
 
-    public int getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(int isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
@@ -74,13 +73,5 @@ public class Livre {
 
     public void setEditeur(String editeur) {
         this.editeur = editeur;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 }
