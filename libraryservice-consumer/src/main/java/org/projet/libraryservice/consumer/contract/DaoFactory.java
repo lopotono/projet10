@@ -4,4 +4,5 @@ public interface DaoFactory {
 
    public LivreDAO getLivreDao();
    public UserDAO getUserDao();
+   public PretDAO getPretDao();
 }
