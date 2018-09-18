@@ -5,9 +5,9 @@
             http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="txManagerSite"
+	<bean id="txManagerPret"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSourceEscalade"></property>
+		<property name="dataSource" ref="dataSourceLibrary"></property>
 	</bean>
 
 	<bean id="abstractManager" abstract="true">
