@@ -30,28 +30,4 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>jaxws-maven-plugin</artifactId>
-					<executions>
-						<execution>
-							<goals>
-								<goal>wsimport</goal>
-							</goals>
-						</execution>
-					</executions>
-					<configuration>
-						<sourceDestDir>${project.basedir}/src/main/java</sourceDestDir>
-						<wsdlUrls>
-							<wsdlUrl>http://linux.home:8080/libraryservice-webapp2535157108091288188/ListeLivres?wsdl</wsdlUrl>
-						</wsdlUrls>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
 </project>
