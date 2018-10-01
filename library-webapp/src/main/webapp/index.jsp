@@ -16,11 +16,15 @@
 		</header>
 		<section class="row">
 		<ul class="nav navbar-nav">	
-			<li class="active"></li>
-			<li></li>			
+			<li class="active"><a href="index.jsp">ACCUEIL</a></li>
+			<li><a href="">PRET DE LIVRES</a></li>
+			<li><a href="">LISTE DES PRETS</a></li>			
 		</ul>
 		</section>
 	</div>
+	
+	<s:form action="" method="post" id="">
+	</s:form>
 <section>
 	<article></article>
 	<aside></aside>
