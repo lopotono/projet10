@@ -10,24 +10,28 @@
 <link type="text/css" rel="stylesheet" href="style.css" />
 </head>
 <body>
-		<div class="container">
+	<div class="container">
 		<header class="page-header">
 			<h1>Bibliothèque</h1>
 		</header>
 		<section class="row">
-		<ul class="nav navbar-nav">	
-			<li class="active"><a href="index.jsp">ACCUEIL</a></li>
-			<li><a href="">PRET DE LIVRES</a></li>
-			<li><a href="">LISTE DES PRETS</a></li>			
-		</ul>
+			<ul class="nav navbar-nav">
+				<li class="active"><s:a action="index">ACCUEIL</s:a></li>
+				<li><s:a action="livres_list">LISTE DES LIVRES</s:a></li>
+				<li><a href="">PRET DE LIVRES</a></li>
+				<li><a href="">LISTE DES PRETS</a></li>
+			</ul>
 		</section>
 	</div>
-	
-	<s:form action="" method="post" id="">
+
+	<s:form action="search" method="post" id="">
+		<s:textfield name="name" requiredLabel="true" placeholder="Recherche"
+			id="search" />
+		<s:submit value="Chercher" id="search-btn" />
 	</s:form>
-<section>
-	<article></article>
-	<aside></aside>
-</section>
+	<section>
+		<article></article>
+		<aside></aside>
+	</section>
 </body>
 </html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN" "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<package name="default" extends="struts-default">
+		<default-action-ref name="index" />
+
+		<action name="index">
+			<result>index.jsp</result>
+		</action>
+
+		<!-- Action listant les livres -->
+		<action name="livres_list"
+			class="org.projet.library.webapp.action.ListLivresAction"
+			method="doList">
+			<result>livres/listelivres.jsp</result>
+		</action>
+
+		<!-- Action recherche livre -->
+		<action name="search"
+			class="org.projet.library.webapp.action.SearchAction" method="search">
+			<result name="input">index.jsp</result>
+			<result name="success">result.jsp</result>
+		</action>
+	</package>
+</struts>
