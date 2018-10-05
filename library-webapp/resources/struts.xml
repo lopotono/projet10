@@ -21,5 +21,12 @@
 			<result name="input">index.jsp</result>
 			<result name="success">result.jsp</result>
 		</action>
+
+		<!-- Action listant les prêts -->
+		<action name="pret_list"
+			class="org.projet.library.webapp.action.ListPretAction"
+			method="listPret">
+			<result>livres/listeprets.jsp</result>
+		</action>
 	</package>
 </struts>
