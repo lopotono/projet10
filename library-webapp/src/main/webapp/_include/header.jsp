@@ -9,8 +9,7 @@
 <s:if test="#session.user">
 	Utilisateur connecté :
 	<s:property value="#session.user.name" />
-	<br />
-	<s:a action="logout" class="btn btn-primary btn-sm">DECONNEXION</s:a>
+	<s:a action="logout" class="btn btn-primary btn-lg">DECONNEXION</s:a>
 </s:if> <s:else>
 	<s:a action="login" class="btn btn-primary btn-lg">CONNEXION</s:a>
 </s:else></header>
