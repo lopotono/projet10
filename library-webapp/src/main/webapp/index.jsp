@@ -10,28 +10,26 @@
 <link type="text/css" rel="stylesheet" href="style.css" />
 </head>
 <body>
-	<div class="container">
-		<header class="page-header">
-			<h1>Bibliothèque</h1>
-		</header>
-		<section class="row">
+	<div class="container-fluid">
+		<div class="navbar navbar-default navbar-fixed-top">
+			<div class="navbar-header">
+				<div class="navbar-brand">Bibliothèque</div>
+			</div>
 			<ul class="nav navbar-nav">
 				<li class="active"><s:a action="index">ACCUEIL</s:a></li>
 				<li><s:a action="livres_list">LISTE DES LIVRES</s:a></li>
-				<li><a href="">PRET DE LIVRES</a></li>
-				<li><a href="">LISTE DES PRETS</a></li>
+				<s:if test="#session.user">
+					<li><s:a action="">PRET DE LIVRES</s:a></li>
+					<li><s:a action="pret_livre">LISTE DES PRETS</s:a></li>
+				</s:if>
+				<li><%@ include file="./_include/header.jsp"%></li>
 			</ul>
-		</section>
+		</div>
+		<s:form action="search" method="post" id="searchthis">
+			<s:textfield name="name" requiredLabel="true"
+				placeholder="Rechercher" id="search" />
+			<s:submit value="RECHERCHER" id="search-btn" />
+		</s:form>
 	</div>
-
-	<s:form action="search" method="post" id="">
-		<s:textfield name="name" requiredLabel="true" placeholder="Recherche"
-			id="search" />
-		<s:submit value="Chercher" id="search-btn" />
-	</s:form>
-	<section>
-		<article></article>
-		<aside></aside>
-	</section>
 </body>
 </html>
