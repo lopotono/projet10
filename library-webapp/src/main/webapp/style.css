@@ -81,14 +81,11 @@ body {
 }
 
 .btn-primary {
-	width: 100%;
-	line-height: 10px;
 	text-align: center;
 	vertical-align: middle;
 	text-decoration: none;
-	font-family: Montserrat, sans-serif;
-	font-size: 0.6em;
-	margin: 0.5em;
+	font-family: Roboto, sans-serif;
+	font-size: 0.5em;
 	margin-left: auto;
 	margin-right: auto;
 }
