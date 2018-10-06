@@ -6,7 +6,7 @@ import org.projet.library.business.contract.LivreManager;
 import org.projet.library.model.livres.Livre;
 
 public class LivreManagerImpl extends AbstractManager implements LivreManager {
-
+		
 	public List<Livre> getLivres() {
 		return getDaoFactory().getLivreDao().getLivres();
 	}

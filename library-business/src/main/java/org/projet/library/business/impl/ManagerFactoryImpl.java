@@ -35,5 +35,5 @@ public class ManagerFactoryImpl implements ManagerFactory{
 
 	public void setUserManager(UserManager userManager) {
 		this.userManager = userManager;
-	}		
+	}
 }
