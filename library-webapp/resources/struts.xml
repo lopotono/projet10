@@ -32,7 +32,7 @@
 		<!-- Action login/logout -->
 		<action name="login"
 			class="org.projet.library.webapp.action.LoginAction" method="doLogin">
-			<result>login.jsp</result>
+			<result name="input">login.jsp</result>
 			<result name="success" type="redirectAction">index</result>
 		</action>
 		<action name="logout"
