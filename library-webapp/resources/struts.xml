@@ -16,7 +16,7 @@
 		</action>
 
 		<!-- Action recherche livre -->
-		<action name="search"
+		<action name="search_livre"
 			class="org.projet.library.webapp.action.SearchAction" method="search">
 			<result name="input">index.jsp</result>
 			<result name="success">result.jsp</result>
