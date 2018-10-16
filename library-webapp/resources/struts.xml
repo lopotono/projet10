@@ -12,7 +12,7 @@
 		<action name="livres_list"
 			class="org.projet.library.webapp.action.ListLivresAction"
 			method="doList">
-			<result>livres/listelivres.jsp</result>
+			<result name="success">livres/listelivres.jsp</result>
 		</action>
 
 		<!-- Action recherche livre -->
@@ -26,7 +26,7 @@
 		<action name="pret_list"
 			class="org.projet.library.webapp.action.ListPretAction"
 			method="listPret">
-			<result>livres/listeprets.jsp</result>
+			<result name="success">livres/listeprets.jsp</result>
 		</action>
 
 		<!-- Action login/logout -->
@@ -39,6 +39,13 @@
 			class="org.projet.library.webapp.action.LoginAction"
 			method="doLogout">
 			<result type="redirectAction">index</result>
+		</action>
+
+		<!-- Action date de prolongation -->
+		<action name="datepro"
+			class="org.projet.library.webapp.action.ProlongationAction"
+			method="execute">
+			<result name="input">livres/listeprets.jsp</result>
 		</action>
 	</package>
 </struts>
