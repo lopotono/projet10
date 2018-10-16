@@ -1,9 +1,15 @@
 package org.projet.libraryservice.business.contract;
 
-import java.util.Calendar;
-import java.util.Date;
+import java.util.List;
+
+import org.projet.libraryservice.model.Pret;
+import org.projet.libraryservice.model.User;
 
 public interface PretManager {
+		
+	List<Pret> getListPret();
 	
-	void SavePret(Calendar datedebut, Calendar datefin, String etat, Date dateprolongation, String userid, String livreid);
+	List<Pret> getPretByUser(User vUser);
+
+	void update(Pret pret);
 }
