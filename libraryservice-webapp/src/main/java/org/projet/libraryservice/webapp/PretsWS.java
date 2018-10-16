@@ -1,7 +1,5 @@
 package org.projet.libraryservice.webapp;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.jws.WebMethod;
@@ -12,24 +10,22 @@ import org.projet.libraryservice.model.User;
 
 @WebService(serviceName = "PretsWS")
 public class PretsWS extends AbstractWebapp {
-		
+
 	@WebMethod
-	public List<Pret> doList(String name) {
-		
-		User vUser = getManagerFactory().getUserManager().getName(name);
+	public List<Pret> getListPret() {
 				
-		return getManagerFactory().getPretManager().getPretByUser(vUser);		
+		return getManagerFactory().getPretManager().getListPret();
+	}
+
+	@WebMethod
+	public void updatePret(Pret pret) {
+		
+		getManagerFactory().getPretManager().update(pret);		
 	}
 	
 	@WebMethod
-	public void doPret(String name, int livreid) {
-								
-		Calendar datedebut = new GregorianCalendar();
-		Calendar datefin = Calendar.getInstance();
-		datefin.add(Calendar.MONTH, 1);
-				
-		User vUser = getManagerFactory().getUserManager().getName(name);
-										
-		getManagerFactory().getPretManager().SavePret(datedebut, datefin, "en cours", null, vUser.getId(), livreid);			
-	}	
+	public List<Pret> getPretByUser(User vUser) {
+		
+		return getManagerFactory().getPretManager().getPretByUser(vUser);
+	}
 }
