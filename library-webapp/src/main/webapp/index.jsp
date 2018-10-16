@@ -19,17 +19,15 @@
 		<s:a action="livres_list">
 			<i class="fa fa-fw fa-book"></i> LISTE DES LIVRES</s:a>
 		<s:if test="#session.user">
-			<s:a action="">
-				<i class="fa fa-fw fa-shopping-cart"></i>PRET DE LIVRES</s:a>
 			<s:a action="pret_list">
-				<i class="fa fa-fw fa-eye-open"></i>LISTE DES PRETS</s:a>
+				<i class="fa fa-fw fa-eye"></i>LISTE DES PRETS</s:a>
 		</s:if>
 
 		<s:if test="#session.user">
 	Utilisateur connecté :
 	<s:property value="#session.user.name" />
 			<s:a action="logout">
-				<i class="fa fa-fw fa-log-out"></i>DECONNEXION</s:a>
+				<i class="fa fa-fw fa-user"></i>DECONNEXION</s:a>
 		</s:if>
 		<s:else>
 			<s:a action="login">
@@ -88,18 +86,17 @@
 				<img src="images/robots.jpg" alt="robots" class="img-rounded"
 					width="180" height="250">
 			</div>
-
-			<s:form action="search_livre" method="post" class="form-horizontal">
-				<div class="form-group">
-					<div class="col-md-8">
-						<s:textfield name="titre" requiredLabel="true"
-							placeholder="Rechercher" class="form-control" />		
-						<s:submit value="RECHERCHER"
-							class="btn btn-success btn btn-success" />
-					</div>
-				</div>
-			</s:form>
 		</div>
 	</div>
+	
+	<s:form action="search_livre" method="post" class="form-horizontal">
+		<div class="form-group">
+			<div class="col-md-8">
+				<s:textfield name="titre" requiredLabel="true"
+					placeholder="Rechercher" class="form-control" />
+				<s:submit value="RECHERCHER" class="btn btn-success btn btn-success" />
+			</div>
+		</div>
+	</s:form>
 </body>
 </html>
