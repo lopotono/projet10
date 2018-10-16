@@ -9,7 +9,12 @@
 <link type="text/css" rel="stylesheet" href="stylelist.css" />
 </head>
 <body>
-
+	
+		<s:a action="index">
+			<span class="badge badge-secondary">ACCUEIL</span>
+		</s:a>
+	<div><strong>Liste des livres disponibles de la bibliothèque</strong></div>
+	
 	<table id="list">
 		<tr>
 			<th>TITRE</th>
@@ -30,6 +35,5 @@
 		</s:iterator>
 	</table>
 
-	<s:a action="index" class="btn btn-primary btn-md pull-left">Retour accueil</s:a>
 </body>
 </html>
