@@ -5,45 +5,43 @@
 <html>
 <head>
 <%@ include file="../_include/head.jsp"%>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<link href="css/bootstrap.css" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="stylelist.css" />
 </head>
 <body>
+	<s:a action="index">
+		<span class="badge badge-secondary">ACCUEIL</span>
+	</s:a>
 
-	<div class="container">
-		<h2>Liste des prêts</h2>
-		<table class="table table-striped">
-			<caption>
-				<p>
-					LISTE DES PRETS DES LIVRES DE
-					<s:property value="#session.user.name" />
-				</p>
-			</caption>
-			<thead>
+	<table id="list">
+		<caption>
+			<p>
+				LISTE DES PRETS DES LIVRES DE
+				<s:property value="#session.user.name" />
+			</p>
+		</caption>
+		<thead>
+			<tr>
+				<th>Livre</th>
+				<th>Date du prêt</th>
+				<th>Date de fin du prêt</th>
+				<th>Etat du prêt</th>
+				<th>Prolonger le prêt</th>
+			</tr>
+		</thead>
+		<tbody>
+			<s:iterator value="listPrets">
 				<tr>
-					<th>Livre</th>
-					<th>Date du prêt</th>
-					<th>Date de fin du prêt</th>
+					<td><s:property value="titre" /></td>
+					<td><s:property value="datedebut" /></td>
+					<td><s:property value="datefin" /></td>
+					<td><s:property value="etat" /></td>
+					<td><s:submit value="prolongation" action="datepro"
+							class="btn btn-success" /></td>
 				</tr>
-			</thead>
-			<tbody>
-			<s:iterator value="listPret">
-				<tr>
-					<td><s:property value="titre"/></td>
-					<td><s:date name="datedebut" format="dd/MM/yyyy" /></td>
-					<td><s:date name="datefin" format="dd/MM/yyyy" /></td>
-				</tr>
-				</s:iterator>
-			</tbody>
-		</table>
-		<s:a action="index" class="btn btn-primary btn-md pull-left">Retour accueil</s:a>
-	</div>
+			</s:iterator>
+		</tbody>
+	</table>
 
 </body>
 </html>
