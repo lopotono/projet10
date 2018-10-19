@@ -9,13 +9,13 @@
 <link type="text/css" rel="stylesheet" href="stylelist.css" />
 </head>
 <body>
-	
-		<s:a action="index">
-			<span class="badge badge-secondary">ACCUEIL</span>
-		</s:a>
-	<div><strong>Liste des livres disponibles de la bibliothèque</strong></div>
-	
+
+	<s:a action="index">
+		<span class="badge badge-secondary">ACCUEIL</span>
+	</s:a>
+
 	<table id="list">
+		<caption>Liste des livres disponibles de la bibliothèque</caption>
 		<tr>
 			<th>TITRE</th>
 			<th>AUTEUR</th>
