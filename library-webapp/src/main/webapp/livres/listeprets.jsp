@@ -14,14 +14,10 @@
 	</s:a>
 
 	<table id="list">
-		<caption>
-			<p>
-				LISTE DES PRETS DES LIVRES DE
-				<s:property value="#session.user.name" />
-			</p>
-		</caption>
+
 		<thead>
 			<tr>
+				<th>Utilisateur</th>
 				<th>Livre</th>
 				<th>Date du prêt</th>
 				<th>Date de fin du prêt</th>
@@ -29,19 +25,19 @@
 				<th>Prolonger le prêt</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody>	
 			<s:iterator value="listPrets">
 				<tr>
-					<td><s:property value="titre" /></td>
+					<td><s:property value="#session.user.name" /></td>
+					<td><s:property value="idlivre"/></td>			
 					<td><s:property value="datedebut" /></td>
-					<td><s:property value="datefin" /></td>
+					<td><s:date name="datefin" format="dd/MM/yy" /></td>
 					<td><s:property value="etat" /></td>
-					<td><s:submit value="prolongation" action="datepro"
-							class="btn btn-success" /></td>
+					<td><s:a action="datepro" class="label label-success">PROLONGER</s:a></td>
 				</tr>
 			</s:iterator>
 		</tbody>
 	</table>
-
+	
 </body>
 </html>
