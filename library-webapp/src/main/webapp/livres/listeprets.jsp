@@ -17,7 +17,6 @@
 
 		<thead>
 			<tr>
-				<th>Utilisateur</th>
 				<th>Livre</th>
 				<th>Date du prêt</th>
 				<th>Date de fin du prêt</th>
@@ -26,24 +25,28 @@
 			</tr>
 		</thead>
 		<tbody>
-			<s:iterator value="listPrets">
-				<tr>
-					<td><s:property value="#session.user.name" /></td>
-					<td><s:property value="idlivre" /></td>
-					<td><s:property value="datedebut" /></td>
-					<td><s:date name="datefin" format="dd/MM/yy" /></td>
-					<td><s:property value="etat" /></td>
-					<!--  <td><s:a action="datepro" class="label label-success">PROLONGER</s:a></td>-->	
-					<s:if test="etat=='en cours'">			
-						<td><s:url action="datepro" var="prolongerlink">
-								<s:param name="id">
-									<s:property value="id" />
-								</s:param>
-							</s:url> <a href="${prolongerlink}" class="label label-success">PROLONGER</a>
-						</td>
-					</s:if>
-				</tr>
-			</s:iterator>
+		<caption>
+			<s:property value="#session.user.name" />
+		</caption>
+		<s:iterator value="listPrets">
+			<tr>
+				<td><s:property value="livre.id_livre" /></td>
+				<td><s:date name="datedebut" format="dd/MM/yyyy" /></td>
+				<td><s:date name="datefin" format="dd/MM/yyyy" /></td>
+				<td><s:property value="etat" /></td>
+				<s:if test="etat=='en cours'">
+					<td><s:url action="datepro" var="prolongerlink">
+							<s:param name="id">
+								<s:property value="id" />
+							</s:param>
+						</s:url><a href="${prolongerlink}" class="label label-success">PROLONGER</a>
+					</td>
+				</s:if>
+				<s:else>
+					<td><span class="badge badge-secondary">X</span></td>
+				</s:else>
+			</tr>
+		</s:iterator>
 		</tbody>
 	</table>
 
