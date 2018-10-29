@@ -48,14 +48,14 @@ public class ProlongationAction extends AbstractAction {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+		
 	public String execute() {
 		
 		String vResult = ActionSupport.INPUT;
 		Pret pret = getManagerFactory().getPretManager().getPretById(id);
-		
+			
 		// Vérifier la date de prolongation si existe déjà
-		if (dateprolongation != null) {			
+		if (pret.getDateprolongation() == null) {			
 			Calendar date = pret.getDatefin();
 			date.add(Calendar.MONTH, 1);			
 			pret.setDateprolongation(date);
