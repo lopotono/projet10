@@ -3,12 +3,13 @@ package org.projet.library.webapp.action;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.struts2.interceptor.SessionAware;
 import org.projet.library.model.prets.Pret;
-import org.projet.library.model.user.User;
+import org.projet.library.model.prets.User;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class ListPretAction extends AbstractAction {
+public class ListPretAction extends AbstractAction implements SessionAware {
 
 	/**
 	 * 
@@ -53,8 +54,9 @@ public class ListPretAction extends AbstractAction {
 	}
 										
 	public String listPret() {
-		//listPrets = getManagerFactory().getPretManager().getListPret();
-		//User vUser = (User) this.session.get("user");
+		org.projet.library.model.user.User usr = (org.projet.library.model.user.User) session.get("user");
+		vUser = new User();
+		vUser.setId(usr.getId());
 		listPrets = getManagerFactory().getPretManager().getPretByUser(vUser);
 	
 		return ActionSupport.SUCCESS;
