@@ -12,4 +12,8 @@ public interface PretDAO {
 	List<Pret> getPretByUser(User vUser);
 	
 	void update(Pret pret);
+	
+	Pret getPretById(int id);
+	
+	List<Pret> getPretLate();
 }
