@@ -3,7 +3,7 @@ package org.projet.library.business.contract;
 import java.util.List;
 
 import org.projet.library.model.prets.Pret;
-import org.projet.library.model.user.User;
+import org.projet.library.model.prets.User;
 
 public interface PretManager {
 	
@@ -12,4 +12,8 @@ public interface PretManager {
 	void update(Pret pret);
 	
 	List<Pret> getPretByUser(User vUser);
+
+	Pret getPretById(int id);
+	
+	List<Pret> getPretLate();
 }
