@@ -14,8 +14,8 @@ public class PretManagerImpl extends AbstractManager implements PretManager {
 		List<Pret> list = getDaoFactory().getPretDao().getPretByUser(vUser);
 		for (Iterator<Pret> iterator = list.iterator(); iterator.hasNext();) {
 			Pret pret = (Pret) iterator.next();
-			Livre livre = getDaoFactory().getLivreDao().getLivre(pret.getId());
-			pret.setTitre(livre);
+			Livre livre = getDaoFactory().getLivreDao().getLivre(pret.getId_livre());
+			pret.setLivre(livre);
 		}
 		return list;
 	}
@@ -26,5 +26,13 @@ public class PretManagerImpl extends AbstractManager implements PretManager {
 
 	public List<Pret> getListPret() {
 		return getDaoFactory().getPretDao().getListPret();
+	}
+
+	public Pret getPretById(int id) {
+		return getDaoFactory().getPretDao().getPretById(id);
+	}
+
+	public List<Pret> getPretLate() {
+		return getDaoFactory().getPretDao().getPretLate();
 	}
 }
