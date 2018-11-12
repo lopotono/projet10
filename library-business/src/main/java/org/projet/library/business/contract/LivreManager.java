@@ -9,4 +9,8 @@ public interface LivreManager {
 	List<Livre> getLivres();
 	
 	List<Livre> getSearch(String titre);
+	
+	void update(Livre livre);
+	
+	Livre getLivre(int id);
 }
