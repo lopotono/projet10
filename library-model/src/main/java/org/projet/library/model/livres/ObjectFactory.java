@@ -25,8 +25,12 @@ import javax.xml.namespace.QName;
 public class ObjectFactory {
 
     private final static QName _DoListDispoResponse_QNAME = new QName("http://webapp.libraryservice.projet.org/", "doListDispoResponse");
+    private final static QName _UpdateLivre_QNAME = new QName("http://webapp.libraryservice.projet.org/", "updateLivre");
     private final static QName _DoSearchResponse_QNAME = new QName("http://webapp.libraryservice.projet.org/", "doSearchResponse");
+    private final static QName _GetLivre_QNAME = new QName("http://webapp.libraryservice.projet.org/", "getLivre");
     private final static QName _DoListResponse_QNAME = new QName("http://webapp.libraryservice.projet.org/", "doListResponse");
+    private final static QName _GetLivreResponse_QNAME = new QName("http://webapp.libraryservice.projet.org/", "getLivreResponse");
+    private final static QName _UpdateLivreResponse_QNAME = new QName("http://webapp.libraryservice.projet.org/", "updateLivreResponse");
     private final static QName _DoSearch_QNAME = new QName("http://webapp.libraryservice.projet.org/", "doSearch");
     private final static QName _DoListDispo_QNAME = new QName("http://webapp.libraryservice.projet.org/", "doListDispo");
     private final static QName _DoList_QNAME = new QName("http://webapp.libraryservice.projet.org/", "doList");
@@ -55,11 +59,43 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link UpdateLivre }
+     * 
+     */
+    public UpdateLivre createUpdateLivre() {
+        return new UpdateLivre();
+    }
+
+    /**
      * Create an instance of {@link DoListResponse }
      * 
      */
     public DoListResponse createDoListResponse() {
         return new DoListResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetLivreResponse }
+     * 
+     */
+    public GetLivreResponse createGetLivreResponse() {
+        return new GetLivreResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateLivreResponse }
+     * 
+     */
+    public UpdateLivreResponse createUpdateLivreResponse() {
+        return new UpdateLivreResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetLivre }
+     * 
+     */
+    public GetLivre createGetLivre() {
+        return new GetLivre();
     }
 
     /**
@@ -104,6 +140,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateLivre }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webapp.libraryservice.projet.org/", name = "updateLivre")
+    public JAXBElement<UpdateLivre> createUpdateLivre(UpdateLivre value) {
+        return new JAXBElement<UpdateLivre>(_UpdateLivre_QNAME, UpdateLivre.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link DoSearchResponse }{@code >}}
      * 
      */
@@ -113,12 +158,39 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetLivre }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webapp.libraryservice.projet.org/", name = "getLivre")
+    public JAXBElement<GetLivre> createGetLivre(GetLivre value) {
+        return new JAXBElement<GetLivre>(_GetLivre_QNAME, GetLivre.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link DoListResponse }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://webapp.libraryservice.projet.org/", name = "doListResponse")
     public JAXBElement<DoListResponse> createDoListResponse(DoListResponse value) {
         return new JAXBElement<DoListResponse>(_DoListResponse_QNAME, DoListResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetLivreResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webapp.libraryservice.projet.org/", name = "getLivreResponse")
+    public JAXBElement<GetLivreResponse> createGetLivreResponse(GetLivreResponse value) {
+        return new JAXBElement<GetLivreResponse>(_GetLivreResponse_QNAME, GetLivreResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateLivreResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webapp.libraryservice.projet.org/", name = "updateLivreResponse")
+    public JAXBElement<UpdateLivreResponse> createUpdateLivreResponse(UpdateLivreResponse value) {
+        return new JAXBElement<UpdateLivreResponse>(_UpdateLivreResponse_QNAME, UpdateLivreResponse.class, null, value);
     }
 
     /**

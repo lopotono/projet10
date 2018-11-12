@@ -28,6 +28,30 @@ public interface LivresWS {
     /**
      * 
      * @param arg0
+     */
+    @WebMethod
+    @RequestWrapper(localName = "updateLivre", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.livres.UpdateLivre")
+    @ResponseWrapper(localName = "updateLivreResponse", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.livres.UpdateLivreResponse")
+    @Action(input = "http://webapp.libraryservice.projet.org/LivresWS/updateLivreRequest", output = "http://webapp.libraryservice.projet.org/LivresWS/updateLivreResponse")
+    public void updateLivre(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Livre arg0);
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<org.projet.library.model.livres.Livre>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "doListDispo", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.livres.DoListDispo")
+    @ResponseWrapper(localName = "doListDispoResponse", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.livres.DoListDispoResponse")
+    @Action(input = "http://webapp.libraryservice.projet.org/LivresWS/doListDispoRequest", output = "http://webapp.libraryservice.projet.org/LivresWS/doListDispoResponse")
+    public List<Livre> doListDispo();
+
+    /**
+     * 
+     * @param arg0
      * @return
      *     returns java.util.List<org.projet.library.model.livres.Livre>
      */
@@ -47,21 +71,24 @@ public interface LivresWS {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "doListDispo", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.livres.DoListDispo")
-    @ResponseWrapper(localName = "doListDispoResponse", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.livres.DoListDispoResponse")
-    @Action(input = "http://webapp.libraryservice.projet.org/LivresWS/doListDispoRequest", output = "http://webapp.libraryservice.projet.org/LivresWS/doListDispoResponse")
-    public List<Livre> doListDispo();
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<org.projet.library.model.livres.Livre>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "doList", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.livres.DoList")
     @ResponseWrapper(localName = "doListResponse", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.livres.DoListResponse")
     @Action(input = "http://webapp.libraryservice.projet.org/LivresWS/doListRequest", output = "http://webapp.libraryservice.projet.org/LivresWS/doListResponse")
     public List<Livre> doList();
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns org.projet.library.model.livres.Livre
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getLivre", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.livres.GetLivre")
+    @ResponseWrapper(localName = "getLivreResponse", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.livres.GetLivreResponse")
+    @Action(input = "http://webapp.libraryservice.projet.org/LivresWS/getLivreRequest", output = "http://webapp.libraryservice.projet.org/LivresWS/getLivreResponse")
+    public Livre getLivre(
+        @WebParam(name = "arg0", targetNamespace = "")
+        int arg0);
 
 }
