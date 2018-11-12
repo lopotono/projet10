@@ -27,7 +27,7 @@ public class PretDAOImpl extends AbstractDaoImpl implements PretDAO {
 
 	public List<Pret> getPretByUser(User vUser) {
 
-		String vSQL = "SELECT * FROM pret WHERE id_user=" + vUser.getId();
+		String vSQL = "SELECT * FROM pret WHERE id_utilisateur=" + vUser.getId();
 
 		PretRowMapper vRowMapper = new PretRowMapper();
 
@@ -38,15 +38,15 @@ public class PretDAOImpl extends AbstractDaoImpl implements PretDAO {
 
 	public void update(Pret pret) {
 
-		String vSQL = "UPDATE pret SET etat= :etat, datedebut= :datedebut, datefin= :datefin, dateprolongation= :dateprolongation, id_livre= :id_livre WHERE id_pret = :id_pret";
+		String vSQL = "UPDATE pret SET etat= :etat, date_debut= :date_debut, date_fin= :date_fin, dateprolongation= :dateprolongation WHERE id_pret = :id_pret";
 
 		MapSqlParameterSource vParams = new MapSqlParameterSource();
 		vParams.addValue("etat", pret.getEtat(), Types.VARCHAR);
 		vParams.addValue("id_pret", pret.getId(), Types.INTEGER);
-		vParams.addValue("datedebut", pret.getDatedebut(), Types.DATE);
-		vParams.addValue("datefin", pret.getDatefin(), Types.DATE);
+		vParams.addValue("date_debut", pret.getDatedebut(), Types.DATE);
+		vParams.addValue("date_fin", pret.getDatefin(), Types.DATE);
 		vParams.addValue("dateprolongation", pret.getDateprolongation(), Types.DATE);
-		vParams.addValue("id_livre", pret.getTitre(), Types.INTEGER);
+		//vParams.addValue("id_livre", pret.getIdlivre(), Types.INTEGER);
 
 		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
 
@@ -55,5 +55,27 @@ public class PretDAOImpl extends AbstractDaoImpl implements PretDAO {
 		} catch (DuplicateKeyException vEx) {
 
 		}
+	}
+
+	public Pret getPretById(int id) {
+	
+		String vSQL = "SELECT * FROM pret WHERE id_pret=" + id;
+		
+		PretRowMapper vRowMapper = new PretRowMapper();
+
+		List<Pret> pret = getJdbcTemplate().query(vSQL, vRowMapper);
+		
+		return pret.get(0);		
+	}
+
+	public List<Pret> getPretLate() {
+		
+		String vSQL = "SELECT * FROM pret WHERE date_fin";
+		
+		PretRowMapper vRowMapper = new PretRowMapper();
+		
+		List<Pret> pret = getJdbcTemplate().query(vSQL, vRowMapper);
+		
+		return pret;
 	}
 }
