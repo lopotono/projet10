@@ -3,7 +3,7 @@ package org.projet.library.consumer.contract;
 import java.util.List;
 
 import org.projet.library.model.prets.Pret;
-import org.projet.library.model.user.User;
+import org.projet.library.model.prets.User;
 
 public interface PretDAO {
 		
@@ -11,5 +11,9 @@ public interface PretDAO {
 		
 	void update(Pret pret);
 	
-	List<Pret> getPretByUser(User vUser);	
+	List<Pret> getPretByUser(User vUser);
+	
+	Pret getPretById(int id);
+	
+	List<Pret> getPretLate();
 }
