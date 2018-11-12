@@ -28,4 +28,16 @@ public class PretsWS extends AbstractWebapp {
 		
 		return getManagerFactory().getPretManager().getPretByUser(vUser);
 	}
+	
+	@WebMethod
+	public Pret getPretById(int id) {
+		
+		return getManagerFactory().getPretManager().getPretById(id);
+	}
+	
+	@WebMethod
+	public List<Pret> getPretLate() {
+		
+		return getManagerFactory().getPretManager().getPretLate();
+	}
 }
