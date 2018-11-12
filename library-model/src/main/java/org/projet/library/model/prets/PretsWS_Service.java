@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "PretsWS", targetNamespace = "http://webapp.libraryservice.projet.org/", wsdlLocation = "http://linux.home:8080/libraryservice-webapp4096033253953139206/PretsWS?wsdl")
+@WebServiceClient(name = "PretsWS", targetNamespace = "http://webapp.libraryservice.projet.org/", wsdlLocation = "http://linux.home:8080/libraryservice-webapp1332032557942792292/PretsWS?wsdl")
 public class PretsWS_Service
     extends Service
 {
@@ -30,7 +30,7 @@ public class PretsWS_Service
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://linux.home:8080/libraryservice-webapp4096033253953139206/PretsWS?wsdl");
+            url = new URL("http://linux.home:8080/libraryservice-webapp1332032557942792292/PretsWS?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

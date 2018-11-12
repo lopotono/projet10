@@ -27,32 +27,68 @@ public interface PretsWS {
 
     /**
      * 
+     * @return
+     *     returns java.util.List<org.projet.library.model.prets.Pret>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getPretLate", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.prets.GetPretLate")
+    @ResponseWrapper(localName = "getPretLateResponse", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.prets.GetPretLateResponse")
+    @Action(input = "http://webapp.libraryservice.projet.org/PretsWS/getPretLateRequest", output = "http://webapp.libraryservice.projet.org/PretsWS/getPretLateResponse")
+    public List<Pret> getPretLate();
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns org.projet.library.model.prets.Pret
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getPretById", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.prets.GetPretById")
+    @ResponseWrapper(localName = "getPretByIdResponse", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.prets.GetPretByIdResponse")
+    @Action(input = "http://webapp.libraryservice.projet.org/PretsWS/getPretByIdRequest", output = "http://webapp.libraryservice.projet.org/PretsWS/getPretByIdResponse")
+    public Pret getPretById(
+        @WebParam(name = "arg0", targetNamespace = "")
+        int arg0);
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<org.projet.library.model.prets.Pret>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getListPret", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.prets.GetListPret")
+    @ResponseWrapper(localName = "getListPretResponse", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.prets.GetListPretResponse")
+    @Action(input = "http://webapp.libraryservice.projet.org/PretsWS/getListPretRequest", output = "http://webapp.libraryservice.projet.org/PretsWS/getListPretResponse")
+    public List<Pret> getListPret();
+
+    /**
+     * 
+     * @param arg0
+     */
+    @WebMethod
+    @RequestWrapper(localName = "updatePret", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.prets.UpdatePret")
+    @ResponseWrapper(localName = "updatePretResponse", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.prets.UpdatePretResponse")
+    @Action(input = "http://webapp.libraryservice.projet.org/PretsWS/updatePretRequest", output = "http://webapp.libraryservice.projet.org/PretsWS/updatePretResponse")
+    public void updatePret(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Pret arg0);
+
+    /**
+     * 
      * @param arg0
      * @return
      *     returns java.util.List<org.projet.library.model.prets.Pret>
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "doListPret", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.prets.DoListPret")
-    @ResponseWrapper(localName = "doListPretResponse", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.prets.DoListPretResponse")
-    @Action(input = "http://webapp.libraryservice.projet.org/PretsWS/doListPretRequest", output = "http://webapp.libraryservice.projet.org/PretsWS/doListPretResponse")
-    public List<Pret> doListPret(
+    @RequestWrapper(localName = "getPretByUser", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.prets.GetPretByUser")
+    @ResponseWrapper(localName = "getPretByUserResponse", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.prets.GetPretByUserResponse")
+    @Action(input = "http://webapp.libraryservice.projet.org/PretsWS/getPretByUserRequest", output = "http://webapp.libraryservice.projet.org/PretsWS/getPretByUserResponse")
+    public List<Pret> getPretByUser(
         @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     */
-    @WebMethod
-    @RequestWrapper(localName = "doPret", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.prets.DoPret")
-    @ResponseWrapper(localName = "doPretResponse", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.prets.DoPretResponse")
-    @Action(input = "http://webapp.libraryservice.projet.org/PretsWS/doPretRequest", output = "http://webapp.libraryservice.projet.org/PretsWS/doPretResponse")
-    public void doPret(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        int arg1);
+        User arg0);
 
 }
