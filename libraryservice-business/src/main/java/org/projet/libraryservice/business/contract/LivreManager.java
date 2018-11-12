@@ -11,4 +11,8 @@ public interface LivreManager {
     List<Livre> getSearchLivre(String titre);
     
     List<Livre> getLivresDispo(boolean livredispo);
+        
+    void update(Livre livre);
+    
+    Livre getLivre(int id);
 }
