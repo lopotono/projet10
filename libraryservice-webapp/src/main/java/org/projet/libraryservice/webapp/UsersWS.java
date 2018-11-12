@@ -22,4 +22,12 @@ public class UsersWS extends AbstractWebapp {
 		
 		return vUser;		
 	}
+	
+	@WebMethod
+	public User idUser(int id) {
+		
+		User vUser = getManagerFactory().getUserManager().getUser(id);
+		
+		return vUser;
+	}
 }
