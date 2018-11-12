@@ -23,4 +23,14 @@ public class LivresWS extends AbstractWebapp {
 	public List<Livre> doSearch(String titre) {		
 		return getManagerFactory().getLivreManager().getSearchLivre(titre);
 	}
+	
+	@WebMethod
+	public void updateLivre(Livre livre) {
+		getManagerFactory().getLivreManager().update(livre);
+	}
+	
+	@WebMethod
+	public Livre getLivre(int id) {
+		return getManagerFactory().getLivreManager().getLivre(id);
+	}
 }
