@@ -12,17 +12,17 @@ public class ProlongationAction extends AbstractAction {
 	 * 
 	 */
 	private static final long serialVersionUID = -915156647719284676L;
-	private Calendar dateprolongation;
+	private boolean prolongation;
 	private Calendar datefin;
 	private Pret pret;
 	private int id;
 
-	public Calendar getDateprolongation() {
-		return dateprolongation;
+	public boolean isProlongation() {
+		return prolongation;
 	}
 
-	public void setDateprolongation(Calendar dateprolongation) {
-		this.dateprolongation = dateprolongation;
+	public void setProlongation(boolean prolongation) {
+		this.prolongation = prolongation;
 	}
 
 	public Calendar getDatefin() {
@@ -32,38 +32,35 @@ public class ProlongationAction extends AbstractAction {
 	public void setDatefin(Calendar datefin) {
 		this.datefin = datefin;
 	}
-	
+
 	public Pret getPret() {
 		return pret;
 	}
-	
+
 	public void setPret(Pret pret) {
 		this.pret = pret;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
-		
+
 	public String execute() {
-		
+
 		String vResult = ActionSupport.INPUT;
 		Pret pret = getManagerFactory().getPretManager().getPretById(id);
-			
-		// Vérifier la date de prolongation si existe déjà
-		if (pret.getDateprolongation() == null) {			
+
 			Calendar date = pret.getDatefin();
-			date.add(Calendar.MONTH, 1);			
-			pret.setDateprolongation(date);
+			date.add(Calendar.MONTH, 1);
+			pret.setProlongation(true);
 			pret.setEtat("prolongé");
-			//Appel de la méthode update
+			// Appel de la méthode update
 			getManagerFactory().getPretManager().update(pret);
 			vResult = ActionSupport.SUCCESS;
-		}
-		return vResult;	
-	}
+		return vResult;
+	}	
 }
