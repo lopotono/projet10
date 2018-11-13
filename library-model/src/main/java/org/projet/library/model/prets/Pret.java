@@ -2,7 +2,6 @@
 package org.projet.library.model.prets;
 
 import java.util.Calendar;
-import java.util.Date;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -24,12 +23,12 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *       &lt;sequence>
  *         &lt;element name="datedebut" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="datefin" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="dateprolongation" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="etat" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="id_livre" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="id_user" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="livre" type="{http://webapp.libraryservice.projet.org/}livre" minOccurs="0"/>
+ *         &lt;element name="prolongation" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -42,21 +41,19 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlType(name = "pret", propOrder = {
     "datedebut",
     "datefin",
-    "dateprolongation",
     "etat",
     "id",
     "idLivre",
     "idUser",
-    "livre"
+    "livre",
+    "prolongation"
 })
 public class Pret {
 
     @XmlSchemaType(name = "dateTime")
-    protected Date datedebut;
+    protected Calendar datedebut;
     @XmlSchemaType(name = "dateTime")
     protected Calendar datefin;
-    @XmlSchemaType(name = "dateTime")
-    protected Calendar dateprolongation;
     protected String etat;
     protected int id;
     @XmlElement(name = "id_livre")
@@ -64,6 +61,7 @@ public class Pret {
     @XmlElement(name = "id_user")
     protected int idUser;
     protected Livre livre;
+    protected boolean prolongation;
 
     /**
      * Obtient la valeur de la propriété datedebut.
@@ -73,7 +71,7 @@ public class Pret {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public Date getDatedebut() {
+    public Calendar getDatedebut() {
         return datedebut;
     }
 
@@ -85,7 +83,7 @@ public class Pret {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setDatedebut(Date value) {
+    public void setDatedebut(Calendar value) {
         this.datedebut = value;
     }
 
@@ -111,30 +109,6 @@ public class Pret {
      */
     public void setDatefin(Calendar value) {
         this.datefin = value;
-    }
-
-    /**
-     * Obtient la valeur de la propriété dateprolongation.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public Calendar getDateprolongation() {
-        return dateprolongation;
-    }
-
-    /**
-     * Définit la valeur de la propriété dateprolongation.
-     * 
-     * @param date
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public void setDateprolongation(Calendar date) {
-        this.dateprolongation = date;
     }
 
     /**
@@ -231,6 +205,22 @@ public class Pret {
      */
     public void setLivre(Livre value) {
         this.livre = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété prolongation.
+     * 
+     */
+    public boolean isProlongation() {
+        return prolongation;
+    }
+
+    /**
+     * Définit la valeur de la propriété prolongation.
+     * 
+     */
+    public void setProlongation(boolean value) {
+        this.prolongation = value;
     }
 
 }
