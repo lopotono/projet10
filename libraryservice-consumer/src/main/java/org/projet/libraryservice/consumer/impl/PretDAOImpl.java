@@ -38,15 +38,14 @@ public class PretDAOImpl extends AbstractDaoImpl implements PretDAO {
 
 	public void update(Pret pret) {
 
-		String vSQL = "UPDATE pret SET etat= :etat, date_debut= :date_debut, date_fin= :date_fin, dateprolongation= :dateprolongation WHERE id_pret = :id_pret";
+		String vSQL = "UPDATE pret SET etat= :etat, date_debut= :date_debut, date_fin= :date_fin, prolongation= :prolongation WHERE id_pret = :id_pret";
 
 		MapSqlParameterSource vParams = new MapSqlParameterSource();
 		vParams.addValue("etat", pret.getEtat(), Types.VARCHAR);
 		vParams.addValue("id_pret", pret.getId(), Types.INTEGER);
 		vParams.addValue("date_debut", pret.getDatedebut(), Types.DATE);
 		vParams.addValue("date_fin", pret.getDatefin(), Types.DATE);
-		vParams.addValue("dateprolongation", pret.getDateprolongation(), Types.DATE);
-		//vParams.addValue("id_livre", pret.getIdlivre(), Types.INTEGER);
+		vParams.addValue("prolongation", pret.isProlongation(), Types.BOOLEAN);
 
 		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
 
