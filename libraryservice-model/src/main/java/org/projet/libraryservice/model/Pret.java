@@ -1,7 +1,6 @@
 package org.projet.libraryservice.model;
 
 import java.util.Calendar;
-import java.util.Date;
 
 public class Pret {
 	
@@ -9,7 +8,10 @@ public class Pret {
 	private Calendar datedebut;
 	private Calendar datefin;
 	private String etat;
-	private Date dateprolongation;
+	private boolean prolongation;
+	private Livre livre;
+	private int id_livre;
+	private int id_user;
 	
 	public int getId() {
 		return id;
@@ -23,7 +25,7 @@ public class Pret {
 	}
 	public void setDatedebut(Calendar datedebut) {
 		this.datedebut = datedebut;
-	}
+	}	
 	
 	public Calendar getDatefin() {
 		return datefin;
@@ -39,10 +41,31 @@ public class Pret {
 		this.etat = etat;
 	}
 	
-	public Date getDateprolongation() {
-		return dateprolongation;
+	public boolean isProlongation() {
+		return prolongation;
 	}
-	public void setDateprolongation(Date dateprolongation) {
-		this.dateprolongation = dateprolongation;
+	public void setProlongation(boolean prolongation) {
+		this.prolongation = prolongation;
+	}	
+	
+	public Livre getLivre() {
+		return livre;
 	}
+	public void setLivre(Livre livre) {
+		this.livre = livre;
+	}
+	
+	public int getId_livre() {
+		return id_livre;
+	}
+	public void setId_livre(int id_livre) {
+		this.id_livre = id_livre;
+	}
+	
+	public int getId_user() {
+		return id_user;
+	}
+	public void setId_user(int id_user) {
+		this.id_user = id_user;
+	}					
 }
