@@ -46,6 +46,8 @@
 			class="org.projet.library.webapp.action.ProlongationAction"
 			method="execute">
 			<result name="input">livres/listeprets.jsp</result>
+			<result name="success" type="redirectAction">pret_list</result>
 		</action>
+		
 	</package>
 </struts>
