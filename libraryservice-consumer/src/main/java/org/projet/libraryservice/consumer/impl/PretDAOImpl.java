@@ -69,7 +69,7 @@ public class PretDAOImpl extends AbstractDaoImpl implements PretDAO {
 
 	public List<Pret> getPretLate() {
 		
-		String vSQL = "SELECT * FROM pret WHERE date_fin";
+		String vSQL = "SELECT * FROM pret WHERE date_fin < NOW()";
 		
 		PretRowMapper vRowMapper = new PretRowMapper();
 		
