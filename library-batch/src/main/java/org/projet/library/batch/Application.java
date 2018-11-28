@@ -28,10 +28,10 @@ public class Application {
 	private ManagerFactory mf;
 
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(Application.class, "--debug");
 	}
 
-	@Scheduled(cron = "0/15 * * * * ?")
+	@Scheduled(cron = "0 */1 * * * ?")
 	public void schedule() {
 		System.out.println("test");
 		List<Pret> list = mf.getPretManager().getPretLate();
@@ -39,7 +39,7 @@ public class Application {
 			User user = mf.getUserManager().getUser(pret.getIdUser());
 			Livre livre = mf.getLivreManager().getLivre(pret.getIdLivre());
 			String body = "Le livre " + livre.getTitre() + " doit être rendu au plus vite !";
-			//ms.sendMail("terragef@gmail.com", user.getMail(), "Pret en retard", body);
+			ms.sendMail("terragef@gmail.com", user.getMail(), "Pret en retard", body);
 			System.out.println(body);
 		}
 	}
