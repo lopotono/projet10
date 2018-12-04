@@ -7,6 +7,7 @@ import org.projet.library.model.livres.Livre;
 import org.projet.library.model.prets.Pret;
 import org.projet.library.model.users.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,6 +23,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 public class Application {
 
 	@Autowired
+	@Qualifier("projetMailSender")
 	private MailSender ms;
 
 	@Autowired
@@ -33,14 +35,12 @@ public class Application {
 
 	@Scheduled(cron = "0 */1 * * * ?")
 	public void schedule() {
-		System.out.println("test");
 		List<Pret> list = mf.getPretManager().getPretLate();
 		for (Pret pret : list) {
 			User user = mf.getUserManager().getUser(pret.getIdUser());
 			Livre livre = mf.getLivreManager().getLivre(pret.getIdLivre());
 			String body = "Le livre " + livre.getTitre() + " doit être rendu au plus vite !";
 			ms.sendMail("terragef@gmail.com", user.getMail(), "Pret en retard", body);
-			System.out.println(body);
 		}
 	}
 }
