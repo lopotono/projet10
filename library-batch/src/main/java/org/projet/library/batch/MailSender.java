@@ -5,10 +5,10 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("projetMailSender")
 public class MailSender {
 
-	@Autowired(required=true)
+	@Autowired(required = true)
 	private JavaMailSender javaMailSender;
 
 	public void sendMail(String from, String to, String subject, String body) {
@@ -25,13 +25,13 @@ public class MailSender {
 		javaMailSender.send(mail);
 
 		System.out.println("Done !");
-		
+
 	}
-	
+
 	public JavaMailSender getJavaMailSender() {
 		return javaMailSender;
 	}
-	
+
 	public void setJavaMailSender(JavaMailSender javaMailSender) {
 		this.javaMailSender = javaMailSender;
 	}
