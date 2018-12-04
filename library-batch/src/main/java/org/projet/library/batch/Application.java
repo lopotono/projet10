@@ -30,7 +30,7 @@ public class Application {
 	private ManagerFactory mf;
 
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(Application.class, "--debug");
+		SpringApplication.run(Application.class, args);
 	}
 
 	@Scheduled(cron = "0 */1 * * * ?")
