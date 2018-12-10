@@ -32,12 +32,7 @@
 			<tr>
 				<td><s:property value="livre.titre" /></td>
 				<td><s:date name="datedebut" format="dd/MM/yyyy" /></td>
-				<td><s:date name="datefin" format="dd/MM/yyyy" /> <s:url
-						action="dateconf" var="configurerlink">
-						<s:param name="id">
-							<s:property value="id" />
-						</s:param>
-					</s:url><a href="${configurerlink}" class="label label-success">15 jours</a></td>
+				<td><s:date name="datefin" format="dd/MM/yyyy" /> 
 				<td><s:property value="etat" /></td>
 				<s:if test="etat=='en cours'">
 					<td><s:url action="datepro" var="prolongerlink">
