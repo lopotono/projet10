@@ -1,8 +1,10 @@
 package org.projet.library.webapp.action;
 
 import java.util.Calendar;
+import java.util.Properties;
 
 import org.projet.library.model.prets.Pret;
+import org.projet.library.webapp.PropertyLoader;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -55,7 +57,10 @@ public class ProlongationAction extends AbstractAction {
 		Pret pret = getManagerFactory().getPretManager().getPretById(id);
 
 			Calendar date = pret.getDatefin();
-			date.add(Calendar.MONTH, 1);
+			PropertyLoader propertiesloader = new PropertyLoader();
+			Properties properties = propertiesloader.getProperty();
+			int nb = Integer.valueOf(properties.getProperty("nombreJours"));
+			date.add(Calendar.DATE, nb);
 			pret.setProlongation(true);
 			pret.setEtat("prolongé");
 			// Appel de la méthode update
