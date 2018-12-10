@@ -17,7 +17,7 @@
 
 		<thead>
 			<tr>
-				<th>Livre</th>
+				<th>Titre du livre</th>
 				<th>Date du prêt</th>
 				<th>Date de fin du prêt</th>
 				<th>Etat du prêt</th>
@@ -30,9 +30,14 @@
 		</caption>
 		<s:iterator value="listPrets">
 			<tr>
-				<td><s:property value="livre.id_livre" /></td>
+				<td><s:property value="livre.titre" /></td>
 				<td><s:date name="datedebut" format="dd/MM/yyyy" /></td>
-				<td><s:date name="datefin" format="dd/MM/yyyy" /></td>
+				<td><s:date name="datefin" format="dd/MM/yyyy" /> <s:url
+						action="dateconf" var="configurerlink">
+						<s:param name="id">
+							<s:property value="id" />
+						</s:param>
+					</s:url><a href="${configurerlink}" class="label label-success">15 jours</a></td>
 				<td><s:property value="etat" /></td>
 				<s:if test="etat=='en cours'">
 					<td><s:url action="datepro" var="prolongerlink">
