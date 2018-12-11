@@ -18,3 +18,4 @@ accessible avec l'URL : http://localhost:4848
 
 *Module batch : fichier jar : library-batch-1.0-SNAPSHOT.jar
 Le batch envoie un mail de relance tous les jours à l'utilisateur qui n'a pas rendu le livre à temps.
+java -jar library-batch-1.0-SNAPSHOT.jar
