@@ -1,5 +1,3 @@
-Le projet 10 est la copie du projet 7.
-
 Cette application est un système d'information d'une bibliothèque d'une grande ville.
 
 Cette application est destinée aux usagers pour rechercher des livres et voir le nombre d'exemplaires disponibles, de suivre leurs prêts en cours et de pouvoir prolonger le prêt d'un ouvrage qu'une seule fois.
