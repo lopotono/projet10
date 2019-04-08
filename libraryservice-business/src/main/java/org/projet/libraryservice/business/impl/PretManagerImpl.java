@@ -1,5 +1,6 @@
 package org.projet.libraryservice.business.impl;
 
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
@@ -21,6 +22,13 @@ public class PretManagerImpl extends AbstractManager implements PretManager {
 	}
 
 	public void update(Pret pret) {
+		if (pret.isProlongation()) {
+			Calendar now = Calendar.getInstance();
+			Calendar date = pret.getDatefin();	
+			if (date.before(now)) {
+				return;
+			}
+		} 
 		getDaoFactory().getPretDao().update(pret);		
 	}
 
@@ -35,4 +43,15 @@ public class PretManagerImpl extends AbstractManager implements PretManager {
 	public List<Pret> getPretLate() {
 		return getDaoFactory().getPretDao().getPretLate();
 	}
+
+	@Override
+	public List<Pret> getPretOver() {
+		return getDaoFactory().getPretDao().getPretOver();
+	}
+
+	@Override
+	public List<Pret> getPretByLivre(Livre livre) {
+		return getDaoFactory().getPretDao().getPretByLivre(livre);
+	}
+
 }
