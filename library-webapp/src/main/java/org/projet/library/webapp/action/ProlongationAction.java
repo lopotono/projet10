@@ -55,17 +55,29 @@ public class ProlongationAction extends AbstractAction {
 
 		String vResult = ActionSupport.INPUT;
 		Pret pret = getManagerFactory().getPretManager().getPretById(id);
-
-			Calendar date = pret.getDatefin();
+		// Récupération de la date du jour 
+		Calendar now = Calendar.getInstance();
+		// Récupération de la date de fin de prêt
+		Calendar date = pret.getDatefin();		
+		
+		// Conditions pour comparer la date du jour et la date de fin de prêt
+		if (date.equals(now) || date.after(now)) {
 			PropertyLoader propertiesloader = new PropertyLoader();
 			Properties properties = propertiesloader.getProperty();
 			int nb = Integer.valueOf(properties.getProperty("nombreJours"));
 			date.add(Calendar.DATE, nb);
 			pret.setProlongation(true);
-			pret.setEtat("prolongé");
-			// Appel de la méthode update
-			getManagerFactory().getPretManager().update(pret);
-			vResult = ActionSupport.SUCCESS;
+			pret.setEtat("prêt prolongé");
+		// Condition pour comparer avant la date de fin de prêt	
+		} else if (date.before(now)) {
+			pret.setEtat("en cours");
+			pret.setProlongation(false);
+		}
+		// Appel de la méthode update
+		getManagerFactory().getPretManager().update(pret);
+
+		vResult = ActionSupport.SUCCESS;
 		return vResult;
-	}	
+	}
+
 }
