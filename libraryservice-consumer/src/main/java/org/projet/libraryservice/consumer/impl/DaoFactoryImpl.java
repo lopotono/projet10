@@ -3,6 +3,7 @@ package org.projet.libraryservice.consumer.impl;
 import org.projet.libraryservice.consumer.contract.DaoFactory;
 import org.projet.libraryservice.consumer.contract.LivreDAO;
 import org.projet.libraryservice.consumer.contract.PretDAO;
+import org.projet.libraryservice.consumer.contract.ReservationDAO;
 import org.projet.libraryservice.consumer.contract.UserDAO;
 
 public class DaoFactoryImpl implements DaoFactory {
@@ -10,6 +11,7 @@ public class DaoFactoryImpl implements DaoFactory {
     private LivreDAO livreDao;
     private UserDAO userDao;
     private PretDAO pretDao;
+    private ReservationDAO reservationDao;
 
     public LivreDAO getLivreDao() {
         return livreDao;
@@ -34,4 +36,13 @@ public class DaoFactoryImpl implements DaoFactory {
 	public void setPretDao(PretDAO pretDao) {
 		this.pretDao = pretDao;
 	}
+
+	public ReservationDAO getReservationDao() {
+		return reservationDao;
+	}
+
+	public void setReservationDao(ReservationDAO reservationDao) {
+		this.reservationDao = reservationDao;
+	}
+
 }
