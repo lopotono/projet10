@@ -7,4 +7,8 @@ public interface ManagerFactory {
 	PretManager getPretManager();
 	
 	UserManager getUserManager();
+	
+	ReservationManager getReservationManager();
+	
+	
 }
