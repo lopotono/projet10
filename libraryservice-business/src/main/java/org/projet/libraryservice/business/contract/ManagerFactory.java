@@ -5,4 +5,5 @@ public interface ManagerFactory {
     LivreManager getLivreManager();
     UserManager getUserManager();
     PretManager getPretManager();
+	ReservationManager getReservationManager();
 }
