@@ -4,6 +4,7 @@ import org.projet.library.business.contract.LivreManager;
 import org.projet.library.business.contract.UserManager;
 import org.projet.library.business.contract.ManagerFactory;
 import org.projet.library.business.contract.PretManager;
+import org.projet.library.business.contract.ReservationManager;
 
 public class ManagerFactoryImpl implements ManagerFactory{
 
@@ -35,5 +36,15 @@ public class ManagerFactoryImpl implements ManagerFactory{
 
 	public void setUserManager(UserManager userManager) {
 		this.userManager = userManager;
+	}
+	
+	private ReservationManager reservationManager;
+
+	public ReservationManager getReservationManager() {
+		return reservationManager;
+	}
+
+	public void setReservationManager(ReservationManager reservationManager) {
+		this.reservationManager = reservationManager;
 	}
 }
