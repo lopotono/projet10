@@ -27,9 +27,9 @@ public class ObjectFactory {
     private final static QName _InsertReservation_QNAME = new QName("http://webapp.libraryservice.projet.org/", "insertReservation");
     private final static QName _GetPosition_QNAME = new QName("http://webapp.libraryservice.projet.org/", "getPosition");
     private final static QName _InsertReservationResponse_QNAME = new QName("http://webapp.libraryservice.projet.org/", "insertReservationResponse");
-    private final static QName _ListReservationByUser_QNAME = new QName("http://webapp.libraryservice.projet.org/", "listReservationByUser");
     private final static QName _DeleteReservationResponse_QNAME = new QName("http://webapp.libraryservice.projet.org/", "deleteReservationResponse");
-    private final static QName _ListReservationByUserResponse_QNAME = new QName("http://webapp.libraryservice.projet.org/", "listReservationByUserResponse");
+    private final static QName _ListReservationByUserId_QNAME = new QName("http://webapp.libraryservice.projet.org/", "listReservationByUserId");
+    private final static QName _ListReservationByUserIdResponse_QNAME = new QName("http://webapp.libraryservice.projet.org/", "listReservationByUserIdResponse");
     private final static QName _GetReservationResponse_QNAME = new QName("http://webapp.libraryservice.projet.org/", "getReservationResponse");
     private final static QName _GetListReservationResponse_QNAME = new QName("http://webapp.libraryservice.projet.org/", "getListReservationResponse");
     private final static QName _GetPositionResponse_QNAME = new QName("http://webapp.libraryservice.projet.org/", "getPositionResponse");
@@ -45,27 +45,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ListReservationByUser }
-     * 
-     */
-    public ListReservationByUser createListReservationByUser() {
-        return new ListReservationByUser();
-    }
-
-    /**
      * Create an instance of {@link DeleteReservationResponse }
      * 
      */
     public DeleteReservationResponse createDeleteReservationResponse() {
         return new DeleteReservationResponse();
-    }
-
-    /**
-     * Create an instance of {@link ListReservationByUserResponse }
-     * 
-     */
-    public ListReservationByUserResponse createListReservationByUserResponse() {
-        return new ListReservationByUserResponse();
     }
 
     /**
@@ -90,6 +74,22 @@ public class ObjectFactory {
      */
     public InsertReservationResponse createInsertReservationResponse() {
         return new InsertReservationResponse();
+    }
+
+    /**
+     * Create an instance of {@link ListReservationByUserId }
+     * 
+     */
+    public ListReservationByUserId createListReservationByUserId() {
+        return new ListReservationByUserId();
+    }
+
+    /**
+     * Create an instance of {@link ListReservationByUserIdResponse }
+     * 
+     */
+    public ListReservationByUserIdResponse createListReservationByUserIdResponse() {
+        return new ListReservationByUserIdResponse();
     }
 
     /**
@@ -192,15 +192,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ListReservationByUser }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://webapp.libraryservice.projet.org/", name = "listReservationByUser")
-    public JAXBElement<ListReservationByUser> createListReservationByUser(ListReservationByUser value) {
-        return new JAXBElement<ListReservationByUser>(_ListReservationByUser_QNAME, ListReservationByUser.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link DeleteReservationResponse }{@code >}}
      * 
      */
@@ -210,12 +201,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ListReservationByUserResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ListReservationByUserId }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://webapp.libraryservice.projet.org/", name = "listReservationByUserResponse")
-    public JAXBElement<ListReservationByUserResponse> createListReservationByUserResponse(ListReservationByUserResponse value) {
-        return new JAXBElement<ListReservationByUserResponse>(_ListReservationByUserResponse_QNAME, ListReservationByUserResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://webapp.libraryservice.projet.org/", name = "listReservationByUserId")
+    public JAXBElement<ListReservationByUserId> createListReservationByUserId(ListReservationByUserId value) {
+        return new JAXBElement<ListReservationByUserId>(_ListReservationByUserId_QNAME, ListReservationByUserId.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ListReservationByUserIdResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webapp.libraryservice.projet.org/", name = "listReservationByUserIdResponse")
+    public JAXBElement<ListReservationByUserIdResponse> createListReservationByUserIdResponse(ListReservationByUserIdResponse value) {
+        return new JAXBElement<ListReservationByUserIdResponse>(_ListReservationByUserIdResponse_QNAME, ListReservationByUserIdResponse.class, null, value);
     }
 
     /**

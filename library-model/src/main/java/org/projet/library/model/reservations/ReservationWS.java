@@ -27,21 +27,6 @@ public interface ReservationWS {
 
     /**
      * 
-     * @param vUser
-     * @return
-     *     returns java.util.List<org.projet.library.model.reservations.Reservation>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "listReservationByUser", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.reservations.ListReservationByUser")
-    @ResponseWrapper(localName = "listReservationByUserResponse", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.reservations.ListReservationByUserResponse")
-    @Action(input = "http://webapp.libraryservice.projet.org/ReservationWS/listReservationByUserRequest", output = "http://webapp.libraryservice.projet.org/ReservationWS/listReservationByUserResponse")
-    public List<Reservation> listReservationByUser(
-    		@WebParam(name = "arg0", targetNamespace = "")
-    		org.projet.library.model.users.User vUser);
-
-    /**
-     * 
      * @param arg0
      */
     @WebMethod
@@ -51,21 +36,6 @@ public interface ReservationWS {
     public void insertReservation(
         @WebParam(name = "arg0", targetNamespace = "")
         Reservation arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns org.projet.library.model.reservations.Reservation
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getReservation", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.reservations.GetReservation")
-    @ResponseWrapper(localName = "getReservationResponse", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.reservations.GetReservationResponse")
-    @Action(input = "http://webapp.libraryservice.projet.org/ReservationWS/getReservationRequest", output = "http://webapp.libraryservice.projet.org/ReservationWS/getReservationResponse")
-    public Reservation getReservation(
-        @WebParam(name = "arg0", targetNamespace = "")
-        int arg0);
 
     /**
      * 
@@ -90,6 +60,36 @@ public interface ReservationWS {
     public void deleteReservation(
         @WebParam(name = "arg0", targetNamespace = "")
         Reservation arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns org.projet.library.model.reservations.Reservation
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getReservation", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.reservations.GetReservation")
+    @ResponseWrapper(localName = "getReservationResponse", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.reservations.GetReservationResponse")
+    @Action(input = "http://webapp.libraryservice.projet.org/ReservationWS/getReservationRequest", output = "http://webapp.libraryservice.projet.org/ReservationWS/getReservationResponse")
+    public Reservation getReservation(
+        @WebParam(name = "arg0", targetNamespace = "")
+        int arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.util.List<org.projet.library.model.reservations.Reservation>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "listReservationByUserId", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.reservations.ListReservationByUserId")
+    @ResponseWrapper(localName = "listReservationByUserIdResponse", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.reservations.ListReservationByUserIdResponse")
+    @Action(input = "http://webapp.libraryservice.projet.org/ReservationWS/listReservationByUserIdRequest", output = "http://webapp.libraryservice.projet.org/ReservationWS/listReservationByUserIdResponse")
+    public List<Reservation> listReservationByUserId(
+        @WebParam(name = "arg0", targetNamespace = "")
+        int arg0);
 
     /**
      * 
