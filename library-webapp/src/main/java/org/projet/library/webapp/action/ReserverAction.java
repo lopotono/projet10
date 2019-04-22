@@ -14,7 +14,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class ReserverAction extends AbstractAction implements SessionAware {
 
 	private static final long serialVersionUID = 3672597566981260465L;
-
+	
 	private int id;
 	private Map<String, Object> session;
 	private int livreid;
@@ -71,7 +71,7 @@ public class ReserverAction extends AbstractAction implements SessionAware {
 	public String execute() {
 
 		String vResult = ActionSupport.INPUT;
-
+		
 		// Récupérer id du livre
 		org.projet.library.model.livres.Livre livre = getManagerFactory().getLivreManager().getLivre(livreid);
 		Livre livre2 = transforme(livre);
@@ -83,24 +83,25 @@ public class ReserverAction extends AbstractAction implements SessionAware {
 		// Insérer datereservation = date du jour
 		reservation.setDatereservation(dateJour);
 		// Récupérer id livre et insérer id du livre
-		reservation.setIdLivre(livre.getLivreid());
+		reservation.setIdLivre(livre2.getLivreid());
 		reservation.setLivre(livre2);
-
-		User vUser = (User) this.session.get("user");
-		//listReservation = getManagerFactory().getReservationManager().listReservationByUser(vUser);
+		org.projet.library.model.users.User vUser = (org.projet.library.model.users.User) session.get("user");
 		// Récupérer id utilisateur
 		reservation.setIdUser(vUser.getId());
-		listReservation = getManagerFactory().getReservationManager().getListReservation();
+		listReservation = getManagerFactory().getReservationManager().listReservationByUserId(vUser.getId());
+		for (Reservation resa : listReservation) {
+			if (reservation.getIdLivre() == resa.getIdLivre()) {
+				addActionError("Vous avez déjà réservé ce livre : " + livre.getTitre());
+				return ActionSupport.ERROR;
+			}
+		}
 		// Insertion des données (état, date du jour, id livre et id user) dans la table
 		// réservation
 		getManagerFactory().getReservationManager().insertReservation(reservation);
-
-		if (reservation.getEtat() == "réservé") {
-			addActionMessage("Vous avez réservé le livre : " + livre.getTitre() + " de " + livre.getAuteur());
-		} 
-
+		
+		addActionMessage("Vous avez réservé le livre : " + livre.getTitre() + " de " + livre.getAuteur());
+		vResult = ActionSupport.SUCCESS;
 		return vResult;
-
 	}
 
 	private Livre transforme(org.projet.library.model.livres.Livre livre) {
@@ -118,4 +119,3 @@ public class ReserverAction extends AbstractAction implements SessionAware {
 		return livre2;
 	}
 }
-
