@@ -30,6 +30,6 @@ spring.main.allow-bean-definition-overriding=true
 
 * Démarrage de Docker et de la base de données :
 
-sudo service docker start (daemon de Linux)
-sudo docker-compose f docker-compose.yml up
-docker exec -it "numéro du container" psql U postgres db_library_reservations
+ - sudo service docker start (daemon de Linux)
+ - sudo docker-compose f docker-compose.yml up
+ - docker exec -it "numéro du container" psql U postgres db_library_reservations
