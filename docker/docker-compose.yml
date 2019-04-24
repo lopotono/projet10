@@ -1,0 +1,31 @@
+version: '1'
+services:
+	libraryreservations.db
+		image: postgres:9.4
+		ports:
+		- "127.0.0.1:9032:5432"
+		volumes:
+#		- "./data/db:/var/lib/postgresql/data"
+		- "./init/db/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d"
+		environment:
+		- POSTGRES_DB=db_library_reservations
+      		- POSTGRES_USER=postgres
+      		- POSTGRES_PASSWORD=innelec
+	web-service:
+		image: glassfish5
+		container_name: library_web-service
+		hostname: 127.0.0.1
+		volumes:
+		- "./web-service/init/db/libraryservice-webapp.war"
+		- "./web-service/init/db/glassfish5/domains/domain1"
+		ports:
+		- "127.0.0.1:4848:4848"
+	web-application:
+		image: glassfish5
+		container_name: library_web-application
+		hostname: 127.0.0.1
+		volumes:
+		- "./web-service/init/db/glassfish5/domains/domain1"
+		ports:
+		- "127.0.0.1:4848:4848"
+		
