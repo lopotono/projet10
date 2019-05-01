@@ -7,4 +7,6 @@ public interface UserManager {
 	User getUser(String name, String password);
 
 	User getUser(int id);
+	
+	void updateUser(User user);
 }
