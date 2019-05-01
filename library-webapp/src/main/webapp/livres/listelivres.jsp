@@ -20,9 +20,18 @@
 			<li class="breadcrumb-item"><s:a action="index">ACCUEIL</s:a></li>
 			<li class="breadcrumb-item active" aria-current="page">LISTE DES
 				LIVRES DE LA BIBLIOTHEQUE</li>
-			<li class="breadcrumb-item" aria-current="pageUser">Utilisateur
-				connecté : <s:property value="#session.user.name" />
-			</li>
+			<s:if test="#session.user">
+				<li class="breadcrumb-item" aria-current="pageUser">Utilisateur
+					connecté : <s:property value="#session.user.name" />
+				</li>
+			</s:if>
+			<s:if test="hasActionErrors()">
+				<li class="breadcrumb-item">
+					<div class="alert alert-warning">
+						<s:actionerror />
+					</div>
+				</li>
+			</s:if>
 		</ol>
 	</nav>
 
@@ -35,9 +44,6 @@
 			<s:if test="#session.user">
 				<th>RESERVER UN LIVRE</th>
 			</s:if>
-			<s:else>
-				<th></th>
-			</s:else>
 		</tr>
 		<s:iterator value="listLivres">
 			<tbody>
@@ -46,7 +52,9 @@
 					<td><s:property value="auteur" /></td>
 					<td><s:property value="personnemax" /></td>
 					<td><s:if test="disponible==false">
-							<h4><p class="text-danger">NON</p></h4>
+							<h4>
+								<p class="text-danger">NON</p>
+							</h4>
 							<s:if test="#session.user">
 								<td><s:url action="reserverLivre" var="reserverlink">
 										<s:param name="livreid">
@@ -61,8 +69,10 @@
 									</h3></td>
 							</s:if>
 						</s:if> <s:if test="disponible==true">
-							<h4><p class="text-success">OUI</p></h4>				
-						</s:if>					
+							<h4>
+								<p class="text-success">OUI</p>
+							</h4>
+						</s:if></td>
 				</tr>
 			</tbody>
 		</s:iterator>
