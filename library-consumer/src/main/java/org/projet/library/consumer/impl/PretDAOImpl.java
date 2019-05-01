@@ -1,115 +1,83 @@
-package org.projet.libraryservice.consumer.impl;
+package org.projet.library.consumer.impl;
 
-import java.sql.Types;
 import java.util.List;
 
-import org.projet.libraryservice.consumer.contract.PretDAO;
-import org.projet.libraryservice.consumer.impl.rowmapper.PretRowMapper;
-import org.projet.libraryservice.model.Livre;
-import org.projet.libraryservice.model.Pret;
-import org.projet.libraryservice.model.User;
-import org.springframework.dao.DuplicateKeyException;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.projet.library.consumer.contract.PretDAO;
+import org.projet.library.model.livre.Livre;
+import org.projet.library.model.prets.Pret;
+import org.projet.library.model.prets.PretsWS;
+import org.projet.library.model.prets.PretsWS_Service;
+import org.projet.library.model.prets.User;
 
-public class PretDAOImpl extends AbstractDaoImpl implements PretDAO {
+public class PretDAOImpl implements PretDAO {
 
 	public List<Pret> getListPret() {
-
-		String vSQL = "SELECT * FROM pret";
-
-		PretRowMapper vRowMapper = new PretRowMapper();
-
-		List<Pret> vListPret = getJdbcTemplate().query(vSQL, vRowMapper);
-
-		return vListPret;
-	}
-
-	public List<Pret> getPretByUser(User vUser) {
-
-		String vSQL = "SELECT * FROM pret WHERE id_utilisateur=" + vUser.getId();
-
-		PretRowMapper vRowMapper = new PretRowMapper();
-
-		List<Pret> pret = getJdbcTemplate().query(vSQL, vRowMapper);
-
-		return pret;
+		
+		PretsWS stub = new PretsWS_Service().getPretsWSPort();
+		
+		List<Pret> prets = stub.getListPret();
+		
+		return prets;
 	}
 
 	public void update(Pret pret) {
+	
+		PretsWS stub = new PretsWS_Service().getPretsWSPort();
+		
+		stub.updatePret(pret);
+	}
 
-		String vSQL = "UPDATE pret SET etat= :etat, date_debut= :date_debut, date_fin= :date_fin, prolongation= :prolongation WHERE id_pret = :id_pret";
-
-		MapSqlParameterSource vParams = new MapSqlParameterSource();
-		vParams.addValue("etat", pret.getEtat(), Types.VARCHAR);
-		vParams.addValue("id_pret", pret.getId(), Types.INTEGER);
-		vParams.addValue("date_debut", pret.getDatedebut(), Types.DATE);
-		vParams.addValue("date_fin", pret.getDatefin(), Types.DATE);
-		vParams.addValue("prolongation", pret.isProlongation(), Types.BOOLEAN);
-
-		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
-
-		try {
-			vJdbcTemplate.update(vSQL, vParams);
-		} catch (DuplicateKeyException vEx) {
-
-		}
+	public List<Pret> getPretByUser(User vUser) {
+		
+		PretsWS stub = new PretsWS_Service().getPretsWSPort();
+		
+		List<Pret> prets = stub.getPretByUser(vUser);
+				
+		return prets;
 	}
 
 	public Pret getPretById(int id) {
-
-		String vSQL = "SELECT * FROM pret WHERE id_pret=" + id;
-
-		PretRowMapper vRowMapper = new PretRowMapper();
-
-		List<Pret> pret = getJdbcTemplate().query(vSQL, vRowMapper);
-
-		return pret.get(0);
+	
+		PretsWS stub = new PretsWS_Service().getPretsWSPort();
+		
+		Pret prets = stub.getPretById(id);
+		
+		return prets;
 	}
-
+	
 	public List<Pret> getPretLate() {
-
-		String vSQL = "SELECT * FROM pret WHERE date_fin < NOW()";
-
-		PretRowMapper vRowMapper = new PretRowMapper();
-
-		List<Pret> pret = getJdbcTemplate().query(vSQL, vRowMapper);
-
-		return pret;
+		
+		PretsWS stub = new PretsWS_Service().getPretsWSPort();
+		
+		List<Pret> prets = stub.getPretLate();
+		
+		return prets;		
 	}
 
 	public List<Pret> getPretOver() {
-
-		String vSQL = "SELECT * FROM pret WHERE date_fin";
-
-		PretRowMapper vRowMapper = new PretRowMapper();
-
-		List<Pret> pret = getJdbcTemplate().query(vSQL, vRowMapper);
-
-		return pret;
+		
+		PretsWS stub = new PretsWS_Service().getPretsWSPort();
+		
+		List<Pret> prets = stub.getPretOver();
+		
+		return prets;
 	}
 
-	@Override
 	public List<Pret> getPretByLivre(Livre livre) {
-		
-		String vSQL = "SELECT * FROM pret WHERE id_livre=" + livre.getLivreid();
-		
-		PretRowMapper vRowMapper = new PretRowMapper();
 
-		List<Pret> pret = getJdbcTemplate().query(vSQL, vRowMapper);
-
-		return pret;
+		PretsWS stub = new PretsWS_Service().getPretsWSPort();
+		
+		List<Pret> prets = stub.getPretByLivre(livre);
+		
+		return prets;
 	}
 
-	@Override
 	public List<Pret> listPretByUserId(int id) {
+	
+		PretsWS stub = new PretsWS_Service().getPretsWSPort();
 		
-		String vSQL = "SELECT * FROM pret WHERE id_utilisateur=" + id;
+		List<Pret> prets = stub.listPretByUserId(id);
 		
-		PretRowMapper vRowMapper = new PretRowMapper();
-		
-		List<Pret> pret = getJdbcTemplate().query(vSQL, vRowMapper);
-		
-		return pret;
-	}	
+		return prets;
+	}
 }
