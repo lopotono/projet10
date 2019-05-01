@@ -42,6 +42,18 @@ public interface UsersWS {
 
     /**
      * 
+     * @return
+     *     returns java.util.List<org.projet.library.model.users.User>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "doList", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.users.DoList")
+    @ResponseWrapper(localName = "doListResponse", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.users.DoListResponse")
+    @Action(input = "http://webapp.libraryservice.projet.org/UsersWS/doListRequest", output = "http://webapp.libraryservice.projet.org/UsersWS/doListResponse")
+    public List<User> doList();
+
+    /**
+     * 
      * @param arg1
      * @param arg0
      * @return
@@ -60,14 +72,14 @@ public interface UsersWS {
 
     /**
      * 
-     * @return
-     *     returns java.util.List<org.projet.library.model.users.User>
+     * @param arg0
      */
     @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "doList", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.users.DoList")
-    @ResponseWrapper(localName = "doListResponse", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.users.DoListResponse")
-    @Action(input = "http://webapp.libraryservice.projet.org/UsersWS/doListRequest", output = "http://webapp.libraryservice.projet.org/UsersWS/doListResponse")
-    public List<User> doList();
+    @RequestWrapper(localName = "updateUser", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.users.UpdateUser")
+    @ResponseWrapper(localName = "updateUserResponse", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.users.UpdateUserResponse")
+    @Action(input = "http://webapp.libraryservice.projet.org/UsersWS/updateUserRequest", output = "http://webapp.libraryservice.projet.org/UsersWS/updateUserResponse")
+    public void updateUser(
+        @WebParam(name = "arg0", targetNamespace = "")
+        User arg0);
 
 }

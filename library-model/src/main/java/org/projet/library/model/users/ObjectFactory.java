@@ -29,6 +29,8 @@ public class ObjectFactory {
     private final static QName _DoLoginResponse_QNAME = new QName("http://webapp.libraryservice.projet.org/", "doLoginResponse");
     private final static QName _DoListResponse_QNAME = new QName("http://webapp.libraryservice.projet.org/", "doListResponse");
     private final static QName _IdUserResponse_QNAME = new QName("http://webapp.libraryservice.projet.org/", "idUserResponse");
+    private final static QName _UpdateUser_QNAME = new QName("http://webapp.libraryservice.projet.org/", "updateUser");
+    private final static QName _UpdateUserResponse_QNAME = new QName("http://webapp.libraryservice.projet.org/", "updateUserResponse");
     private final static QName _DoList_QNAME = new QName("http://webapp.libraryservice.projet.org/", "doList");
 
     /**
@@ -76,6 +78,22 @@ public class ObjectFactory {
      */
     public DoLoginResponse createDoLoginResponse() {
         return new DoLoginResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateUser }
+     * 
+     */
+    public UpdateUser createUpdateUser() {
+        return new UpdateUser();
+    }
+
+    /**
+     * Create an instance of {@link UpdateUserResponse }
+     * 
+     */
+    public UpdateUserResponse createUpdateUserResponse() {
+        return new UpdateUserResponse();
     }
 
     /**
@@ -137,6 +155,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://webapp.libraryservice.projet.org/", name = "idUserResponse")
     public JAXBElement<IdUserResponse> createIdUserResponse(IdUserResponse value) {
         return new JAXBElement<IdUserResponse>(_IdUserResponse_QNAME, IdUserResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateUser }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webapp.libraryservice.projet.org/", name = "updateUser")
+    public JAXBElement<UpdateUser> createUpdateUser(UpdateUser value) {
+        return new JAXBElement<UpdateUser>(_UpdateUser_QNAME, UpdateUser.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateUserResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webapp.libraryservice.projet.org/", name = "updateUserResponse")
+    public JAXBElement<UpdateUserResponse> createUpdateUserResponse(UpdateUserResponse value) {
+        return new JAXBElement<UpdateUserResponse>(_UpdateUserResponse_QNAME, UpdateUserResponse.class, null, value);
     }
 
     /**

@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="mail" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="option" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="prenom" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="ville" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -39,6 +40,7 @@ import javax.xml.bind.annotation.XmlType;
     "id",
     "mail",
     "name",
+    "option",
     "password",
     "prenom",
     "ville"
@@ -50,6 +52,7 @@ public class User {
     protected int id;
     protected String mail;
     protected String name;
+    protected boolean option;
     protected String password;
     protected String prenom;
     protected String ville;
@@ -156,6 +159,22 @@ public class User {
      */
     public void setName(String value) {
         this.name = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété option.
+     * 
+     */
+    public boolean isOption() {
+        return option;
+    }
+
+    /**
+     * Définit la valeur de la propriété option.
+     * 
+     */
+    public void setOption(boolean value) {
+        this.option = value;
     }
 
     /**
