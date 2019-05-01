@@ -20,16 +20,16 @@ public class ReservationManagerImpl extends AbstractManager implements Reservati
 
 	@Override
 	public void deleteReservation(Reservation reservation) {
-		getDaoFactory().getReservationDao().deleteReservation(reservation);		
-	}
-
-	@Override
-	public List<Reservation> getPosition(int position) {
-		return getDaoFactory().getReservationDao().getPosition(position);
+		getDaoFactory().getReservationDao().deleteReservation(reservation);
+		// récupérer toutes les réservations pour le livre reservation.getId_livre
+		// chaque réservation décrementer de 1 la position actuelle
+		// appeler update chaque réservation
 	}
 
 	@Override
 	public void insertReservation(Reservation reservation) {
+		int position = getDaoFactory().getReservationDao().getMaxPositionByLivreId(reservation.getId_livre());
+		reservation.setPosition(position + 1);
 		getDaoFactory().getReservationDao().insertReservation(reservation);	
 	}
 
@@ -42,5 +42,15 @@ public class ReservationManagerImpl extends AbstractManager implements Reservati
 			reservation.setLivre(livre);
 		}
 		return list;
+	}
+
+	@Override
+	public List<Reservation> getReservationsByIdLivre(int id) {
+		return getDaoFactory().getReservationDao().getReservationsByIdLivre(id);
+	}
+
+	@Override
+	public List<Reservation> getReservationByIdLivreAndPosition(int id, int position) {
+		return getDaoFactory().getReservationDao().getReservationByIdLivreAndPosition(id, position);
 	}	
 }
