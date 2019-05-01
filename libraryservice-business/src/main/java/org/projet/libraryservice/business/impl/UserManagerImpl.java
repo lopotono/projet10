@@ -22,4 +22,9 @@ public class UserManagerImpl extends AbstractManager implements UserManager {
 	public User getName(String name) {
 		return getDaoFactory().getUserDao().getName(name);
 	}
+
+	@Override
+	public void updateUser(User user) {
+		getDaoFactory().getUserDao().updateUser(user);	
+	}
 }
