@@ -10,6 +10,7 @@ public class User {
 	private String ville;
 	private String password;
 	private String mail;
+	private boolean option;
 	
 	public int getId() {
 		return id;
@@ -65,5 +66,12 @@ public class User {
 	}
 	public void setMail(String mail) {
 		this.mail = mail;
+	}
+	
+	public boolean isOption() {
+		return option;
+	}
+	public void setOption(boolean option) {
+		this.option = option;
 	}
 }
