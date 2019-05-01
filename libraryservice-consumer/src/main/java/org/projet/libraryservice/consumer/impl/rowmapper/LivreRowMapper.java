@@ -18,6 +18,7 @@ public class LivreRowMapper implements RowMapper<Livre> {
         vLivre.setDisponible(pRS.getBoolean("disponible"));
         vLivre.setNbexemplaire(pRS.getInt("nombre_exemplaire"));
         vLivre.setEditeur(pRS.getString("editeur"));
+        vLivre.setPersonnemax(pRS.getInt("personnemax"));
         return vLivre;
     }
 }
