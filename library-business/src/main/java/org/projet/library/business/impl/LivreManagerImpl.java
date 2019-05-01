@@ -3,7 +3,7 @@ package org.projet.library.business.impl;
 import java.util.List;
 
 import org.projet.library.business.contract.LivreManager;
-import org.projet.library.model.livres.Livre;
+import org.projet.library.model.livre.Livre;
 
 public class LivreManagerImpl extends AbstractManager implements LivreManager {
 		
@@ -15,4 +15,15 @@ public class LivreManagerImpl extends AbstractManager implements LivreManager {
 		return getDaoFactory().getLivreDao().getSearch(titre);
 	}
 
+	public void update(Livre livre) {
+		getDaoFactory().getLivreDao().update(livre);
+	}
+
+	public Livre getLivre(int id) {
+		return getDaoFactory().getLivreDao().getLivre(id);
+	}
+
+	public List<Livre> getLivresDisponibles() {
+		return getDaoFactory().getLivreDao().getLivresDisponibles();
+	}	
 }
