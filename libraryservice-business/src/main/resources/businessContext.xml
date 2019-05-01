@@ -25,11 +25,15 @@
 	<bean id="pretManager"
 		class="org.projet.libraryservice.business.impl.PretManagerImpl"
 		parent="abstractManager" />
+	<bean id="reservationManager"
+		class="org.projet.libraryservice.business.impl.ReservationManagerImpl"
+		parent="abstractManager" />
 
 	<bean id="managerFactory"
 		class="org.projet.libraryservice.business.impl.ManagerFactoryImpl">
 		<property name="livreManager" ref="livreManager" />
 		<property name="userManager" ref="userManager" />
 		<property name="pretManager" ref="pretManager" />
+		<property name="reservationManager" ref="reservationManager" />
 	</bean>
 </beans>
