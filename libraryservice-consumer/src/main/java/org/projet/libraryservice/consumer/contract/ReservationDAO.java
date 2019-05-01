@@ -13,9 +13,12 @@ public interface ReservationDAO {
 	Reservation getReservation(int id);
 	
 	void deleteReservation(Reservation reservation);
-	
-	List<Reservation> getPosition(int position);
-	
+		
 	void insertReservation(Reservation reservation);
-
+	
+	int getMaxPositionByLivreId(int id);
+	
+	List<Reservation> getReservationsByIdLivre(int id);
+	
+	List<Reservation> getReservationByIdLivreAndPosition(int id, int position);
 }
