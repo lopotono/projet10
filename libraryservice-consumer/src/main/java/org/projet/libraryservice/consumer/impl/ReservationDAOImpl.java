@@ -81,11 +81,40 @@ public class ReservationDAOImpl extends AbstractDaoImpl implements ReservationDA
 		}
 				
 	}
+	
+	public int getMaxPositionByLivreId(int id) {
+		
+		String vSQL = "SELECT MAX(position) FROM reservation WHERE id_livre=:id_livre";
+		
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("id_livre", id, Types.INTEGER);
+		
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+		
+		Integer value = vJdbcTemplate.queryForObject(vSQL, vParams, Integer.class);
+		
+		if (value == null) {
+			value = 0;
+		}
+		return value;
+	}
 
 	@Override
-	public List<Reservation> getPosition(int position) {
-	
-		String vSQL = "SELECT * FROM reservation WHERE position";
+	public List<Reservation> getReservationsByIdLivre(int id) {
+
+		String vSQL = "SELECT * FROM reservation WHERE id_livre=" + id;
+		
+		ReservationRowMapper vRowMapper = new ReservationRowMapper();
+		
+		List<Reservation> reservation = getJdbcTemplate().query(vSQL, vRowMapper);
+				
+		return reservation;
+	}
+
+	@Override
+	public List<Reservation> getReservationByIdLivreAndPosition(int id, int position) {
+
+		String vSQL = "SELECT * FROM reservation WHERE id_livre=:id_livre AND position=:position";
 		
 		ReservationRowMapper vRowMapper = new ReservationRowMapper();
 		
