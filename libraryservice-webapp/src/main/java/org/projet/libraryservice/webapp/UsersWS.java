@@ -30,4 +30,10 @@ public class UsersWS extends AbstractWebapp {
 		
 		return vUser;
 	}
+	
+	@WebMethod
+	public void updateUser(User user) {
+		
+		getManagerFactory().getUserManager().updateUser(user);
+	}
 }
