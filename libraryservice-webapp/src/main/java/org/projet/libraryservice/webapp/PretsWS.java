@@ -5,6 +5,7 @@ import java.util.List;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
+import org.projet.libraryservice.model.Livre;
 import org.projet.libraryservice.model.Pret;
 import org.projet.libraryservice.model.User;
 
@@ -39,5 +40,23 @@ public class PretsWS extends AbstractWebapp {
 	public List<Pret> getPretLate() {
 		
 		return getManagerFactory().getPretManager().getPretLate();
+	}
+	
+	@WebMethod
+	public List<Pret> getPretOver() {
+		
+		return getManagerFactory().getPretManager().getPretOver();
+	}
+	
+	@WebMethod
+	public List<Pret> getPretByLivre(Livre livre) {
+		 
+		return getManagerFactory().getPretManager().getPretByLivre(livre);
+	}
+	
+	@WebMethod
+	public List<Pret> listPretByUserId(int id) {
+		
+		return getManagerFactory().getPretManager().listPretByUserId(id);
 	}
 }
