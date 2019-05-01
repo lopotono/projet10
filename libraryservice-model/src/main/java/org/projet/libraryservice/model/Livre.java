@@ -10,6 +10,7 @@ public class Livre {
     private boolean disponible;
     private int nbexemplaire;
     private String editeur;
+    private int personnemax;
 
     public int getLivreid() {
         return livreid;
@@ -74,4 +75,12 @@ public class Livre {
     public void setEditeur(String editeur) {
         this.editeur = editeur;
     }
+
+	public int getPersonnemax() {
+		return personnemax;
+	}
+
+	public void setPersonnemax(int personnemax) {
+		this.personnemax = personnemax;
+	}
 }
