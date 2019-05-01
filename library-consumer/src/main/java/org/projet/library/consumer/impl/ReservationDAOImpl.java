@@ -27,15 +27,6 @@ public class ReservationDAOImpl implements ReservationDAO {
 		return reservation;
 	}
 
-	public List<Reservation> getPosition(int position) {
-
-		ReservationWS stub = new ReservationWS_Service().getReservationWSPort();
-		
-		List<Reservation> reservation = stub.getListReservation();
-		
-		return reservation;
-	}
-
 	public void deleteReservation(Reservation reservation) {
 
 		ReservationWS stub = new ReservationWS_Service().getReservationWSPort();
@@ -55,6 +46,24 @@ public class ReservationDAOImpl implements ReservationDAO {
 		ReservationWS stub = new ReservationWS_Service().getReservationWSPort();
 		
 		List<Reservation> reservation = stub.listReservationByUserId(id);
+		
+		return reservation;
+	}
+
+	public List<Reservation> getReservationsByIdLivre(int id) {
+		
+		ReservationWS stub = new ReservationWS_Service().getReservationWSPort();
+		
+		List<Reservation> reservation = stub.getReservationsByIdLivre(id);
+		
+		return reservation;
+	}
+
+	public List<Reservation> getReservationByIdLivreAndPosition(int id, int position) {
+
+		ReservationWS stub = new ReservationWS_Service().getReservationWSPort();
+		
+		List<Reservation> reservation = stub.getReservationByIdLivreAndPosition(id, position);
 		
 		return reservation;
 	}
