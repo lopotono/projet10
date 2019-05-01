@@ -2,7 +2,7 @@ package org.projet.library.consumer.contract;
 
 import java.util.List;
 
-import org.projet.library.model.livres.Livre;
+import org.projet.library.model.livre.Livre;
 
 public interface LivreDAO {
 
@@ -13,4 +13,6 @@ public interface LivreDAO {
 	void update(Livre livre);
 	
 	Livre getLivre(int id);
+	
+	List<Livre> getLivresDisponibles();
 }
