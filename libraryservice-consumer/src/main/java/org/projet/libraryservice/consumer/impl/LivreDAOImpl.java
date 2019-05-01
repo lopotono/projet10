@@ -38,17 +38,6 @@ public class LivreDAOImpl extends AbstractDaoImpl implements LivreDAO {
 		return livres;
 	}
 
-	public List<Livre> getLivresDispo(boolean livredispo) {
-
-		String vSQL = "SELECT * FROM livre WHERE disponible=" + livredispo;
-
-		LivreRowMapper vRowMapper = new LivreRowMapper();
-
-		List<Livre> vListLivres = getJdbcTemplate().query(vSQL, vRowMapper);
-
-		return vListLivres;
-	}
-
 	public Livre getLivre(int id) {
 
 		String vSQL = "SELECT * FROM livre WHERE id_livre=" + id;
@@ -62,7 +51,7 @@ public class LivreDAOImpl extends AbstractDaoImpl implements LivreDAO {
 
 	public void update(Livre livre) {
 		
-		String vSQL = "UPDATE livre SET nbexemplaire= nombre_exemplaire";
+		String vSQL = "UPDATE livre SET nombre_exemplaire= nombre_exemplaire";
 		
 		MapSqlParameterSource vParams = new MapSqlParameterSource();
 		vParams.addValue("nombre_exemplaire", livre.getNbexemplaire(), Types.INTEGER);
@@ -74,5 +63,17 @@ public class LivreDAOImpl extends AbstractDaoImpl implements LivreDAO {
 		} catch (DuplicateKeyException vEx) {
 
 		}		
+	}
+
+	@Override
+	public List<Livre> getLivresDisponibles() {
+		
+		String vSQL = "SELECT * FROM livre WHERE disponible=true";
+		
+		LivreRowMapper vRowMapper = new LivreRowMapper();
+		
+		List<Livre> vListLivres = getJdbcTemplate().query(vSQL, vRowMapper);
+		
+		return vListLivres;
 	}
 }
