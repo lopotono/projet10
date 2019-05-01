@@ -21,10 +21,18 @@
 	<bean id="userDao"
 		class="org.projet.libraryservice.consumer.impl.UserDAOImpl"
 		parent="abstractDao" />
+	<bean id="pretDao"
+		class="org.projet.libraryservice.consumer.impl.PretDAOImpl"
+		parent="abstractDao" />
+	<bean id="reservationDao"
+		class="org.projet.libraryservice.consumer.impl.ReservationDAOImpl"
+		parent="abstractDao" />
 
 	<bean id="daoFactory"
 		class="org.projet.libraryservice.consumer.impl.DaoFactoryImpl">
 		<property name="livreDao" ref="livreDao" />
 		<property name="userDao" ref="userDao" />
+		<property name="pretDao" ref="pretDao" />
+		<property name="reservationDao" ref="reservationDao" />
 	</bean>
 </beans>
