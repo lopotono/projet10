@@ -15,10 +15,6 @@ public class ReservationManagerImpl extends AbstractManager implements Reservati
 		return getDaoFactory().getReservationDao().getReservation(id);
 	}
 
-	public List<Reservation> getPosition(int position) {
-		return getDaoFactory().getReservationDao().getPosition(position);
-	}
-
 	public void deleteReservation(Reservation reservation) {
 		getDaoFactory().getReservationDao().deleteReservation(reservation);
 	}
@@ -29,5 +25,13 @@ public class ReservationManagerImpl extends AbstractManager implements Reservati
 
 	public List<Reservation> listReservationByUserId(int id) {
 		return getDaoFactory().getReservationDao().listReservationByUserId(id);
+	}
+
+	public List<Reservation> getReservationsByIdLivre(int id) {
+		return getDaoFactory().getReservationDao().getReservationsByIdLivre(id);
+	}
+
+	public List<Reservation> getReservationByIdLivreAndPosition(int id, int position) {
+		return getDaoFactory().getReservationDao().getReservationByIdLivreAndPosition(id, position);
 	}
 }
