@@ -41,8 +41,14 @@ public class ReservationWS extends AbstractWebapp {
 	}
 	
 	@WebMethod
-	public List<Reservation> getPosition(int position) {
+	public List<Reservation> getReservationsByIdLivre(int id) {
 		
-		return getManagerFactory().getReservationManager().getPosition(position);		
-	}	
+		return getManagerFactory().getReservationManager().getReservationsByIdLivre(id);
+	}
+	
+	@WebMethod
+	public List<Reservation> getReservationByIdLivreAndPosition(int id, int position) {
+		
+		return getManagerFactory().getReservationManager().getReservationByIdLivreAndPosition(id, position);
+	}
 }
