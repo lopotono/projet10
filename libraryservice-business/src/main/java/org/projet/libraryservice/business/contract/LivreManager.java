@@ -9,10 +9,10 @@ public interface LivreManager {
     List<Livre> getLivres();
     
     List<Livre> getSearchLivre(String titre);
-    
-    List<Livre> getLivresDispo(boolean livredispo);
-        
+           
     void update(Livre livre);
     
     Livre getLivre(int id);
+    
+    List<Livre> getLivresDisponibles();
 }
