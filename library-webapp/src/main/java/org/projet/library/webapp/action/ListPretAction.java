@@ -20,6 +20,7 @@ public class ListPretAction extends AbstractAction implements SessionAware {
 	private Pret pret;
 	private Map<String, Object> session;
 	private User vUser;
+	private int id;
 
 	public List<Pret> getListPrets() {
 		return listPrets;
@@ -52,13 +53,24 @@ public class ListPretAction extends AbstractAction implements SessionAware {
 	public void setvUser(User vUser) {
 		this.vUser = vUser;
 	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 										
 	public String listPret() {
-		org.projet.library.model.user.User usr = (org.projet.library.model.user.User) session.get("user");
+		org.projet.library.model.users.User usr = (org.projet.library.model.users.User) session.get("user");
 		vUser = new User();
 		vUser.setId(usr.getId());
 		listPrets = getManagerFactory().getPretManager().getPretByUser(vUser);
-	
+		
+		if (listPrets.size() == 0) {
+			addActionError("Vous n'avez aucun prêt en cours.");
+		}
 		return ActionSupport.SUCCESS;
-	}
+	}	
 }
