@@ -11,10 +11,12 @@ public interface ReservationManager {
 	Reservation getReservation(int id);
 	
 	void deleteReservation(Reservation reservation);
-	
-	List<Reservation> getPosition(int position);
-	
+		
 	void insertReservation(Reservation reservation);
 
 	List<Reservation> listReservationByUserId(int id);
+	
+	List<Reservation> getReservationsByIdLivre(int id);
+	
+	List<Reservation> getReservationByIdLivreAndPosition(int id, int position);
 }
