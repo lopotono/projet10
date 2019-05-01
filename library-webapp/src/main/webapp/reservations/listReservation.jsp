@@ -28,6 +28,9 @@
 			<li><s:if test="hasActionMessages()">
 					<s:actionmessage />
 				</s:if></li>
+			<li class="font-weight-bold"><s:if test="hasActionErrors()">
+					<s:actionerror />
+				</s:if></li>
 		</ol>
 	</nav>
 
@@ -50,7 +53,7 @@
 					<td><s:property value="datereservation" /></td>
 					<td><s:property value="position" /></td>
 					<td><s:property value="etat" /></td>
-					<td><s:date name="datefin" format="dd/MM/yyyy" /></td>
+					<td></td>
 					<td><s:url action="annuler" var="annulerlink">
 							<s:param name="id">
 								<s:property value="id" />
@@ -63,14 +66,5 @@
 			</s:iterator>
 		</tbody>
 	</table>
-
-	<s:if test="hasActionErrors()">
-		<div class="alert alert-warning">
-			<h3>
-				<s:actionerror />
-			</h3>
-		</div>
-	</s:if>
-
 </body>
 </html>
