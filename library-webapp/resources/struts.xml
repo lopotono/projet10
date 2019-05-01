@@ -22,13 +22,6 @@
 			<result name="success">livres/listeprets.jsp</result>
 		</action>
 		
-		<!-- Action listant les reservations -->
-		<action name="reservation_list"
-			class="org.projet.library.webapp.action.ListReservationAction"
-			method="execute">
-			<result name="success">reservations/listReservation.jsp</result>
-		</action>
-
 		<!-- Action login/logout -->
 		<action name="login"
 			class="org.projet.library.webapp.action.LoginAction" method="doLogin">
@@ -44,7 +37,8 @@
 		<!-- Action réserver livre -->
 		<action name="reserverLivre"
 			class="org.projet.library.webapp.action.ReserverAction" method="execute">
-			<result name="input">reservations/listReservation.jsp</result>
+			<result name="success" type="redirectAction">listeresa</result>
+			<result name="error" type="redirectAction">livres_list</result>
 		</action>
 
 		<!-- Action date de prolongation -->
@@ -59,8 +53,21 @@
 		<action name="annuler"
 			class="org.projet.library.webapp.action.AnnulerAction"
 			method="execute">
-			<result name="success">reservations/listReservation.jsp</result>
+			<result name="success" type="redirectAction">listeresa</result>
 		</action>
 						
+		<!-- Action envoyer mail de rappel -->
+		<action name="rappel"
+			class="org.projet.library.webapp.action.RappelAction"
+			method="execute">
+			<result name="success">livres/listeprets.jsp</result>
+		</action>
+		
+		<!-- Action liste des réservations -->
+		<action name="listeresa"
+			class="org.projet.library.webapp.action.ListResaAction"
+			method="execute">
+			<result name="success">reservations/listReservation.jsp</result>
+		</action>
 	</package>
 </struts>
