@@ -10,15 +10,10 @@ import java.util.List;
 public class LivresWS extends AbstractWebapp {
 
 	@WebMethod
-	public List<Livre> doList() {
+	public List<Livre> getLivres() {
 		return getManagerFactory().getLivreManager().getLivres();
 	}
-	
-	@WebMethod
-	public List<Livre> doListDispo() {		
-		return getManagerFactory().getLivreManager().getLivresDispo(true);								
-	}
-	
+		
 	@WebMethod
 	public List<Livre> doSearch(String titre) {		
 		return getManagerFactory().getLivreManager().getSearchLivre(titre);
@@ -32,5 +27,10 @@ public class LivresWS extends AbstractWebapp {
 	@WebMethod
 	public Livre getLivre(int id) {
 		return getManagerFactory().getLivreManager().getLivre(id);
+	}
+	
+	@WebMethod
+	public List<Livre> getLivresDisponibles() {
+		return getManagerFactory().getLivreManager().getLivresDisponibles();
 	}
 }
