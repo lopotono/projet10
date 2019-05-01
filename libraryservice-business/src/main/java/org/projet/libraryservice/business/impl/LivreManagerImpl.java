@@ -15,15 +15,16 @@ public class LivreManagerImpl extends AbstractManager implements LivreManager {
 		return getDaoFactory().getLivreDao().getSearchLivre(titre);
 	}
 
-	public List<Livre> getLivresDispo(boolean livredispo) {
-		return getDaoFactory().getLivreDao().getLivresDispo(livredispo);
-	}
-
 	public void update(Livre livre) {
 		getDaoFactory().getLivreDao().update(livre);	
 	}
 
 	public Livre getLivre(int id) {
 		return getDaoFactory().getLivreDao().getLivre(id);
+	}
+
+	@Override
+	public List<Livre> getLivresDisponibles() {
+		return getDaoFactory().getLivreDao().getLivresDisponibles();
 	}
 }
