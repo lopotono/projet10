@@ -1,6 +1,7 @@
 
 package org.projet.library.model.reservations;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -21,6 +22,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="datemail" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="datereservation" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="etat" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
@@ -39,6 +41,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "reservation", propOrder = {
+    "datemail",
     "datereservation",
     "etat",
     "id",
@@ -51,6 +54,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
 public class Reservation {
 
     @XmlSchemaType(name = "dateTime")
+    protected Calendar datemail;
+    @XmlSchemaType(name = "dateTime")
     protected Date datereservation;
     protected String etat;
     protected int id;
@@ -61,6 +66,30 @@ public class Reservation {
     protected Livre livre;
     protected int position;
     protected User vUser;
+
+    /**
+     * Obtient la valeur de la propriété datemail.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public Calendar getDatemail() {
+        return datemail;
+    }
+
+    /**
+     * Définit la valeur de la propriété datemail.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setDatemail(Calendar value) {
+        this.datemail = value;
+    }
 
     /**
      * Obtient la valeur de la propriété datereservation.

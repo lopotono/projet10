@@ -30,6 +30,51 @@ public interface ReservationWS {
      * @param arg0
      */
     @WebMethod
+    @RequestWrapper(localName = "updateReservation", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.reservations.UpdateReservation")
+    @ResponseWrapper(localName = "updateReservationResponse", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.reservations.UpdateReservationResponse")
+    @Action(input = "http://webapp.libraryservice.projet.org/ReservationWS/updateReservationRequest", output = "http://webapp.libraryservice.projet.org/ReservationWS/updateReservationResponse")
+    public void updateReservation(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Reservation arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.util.List<org.projet.library.model.reservations.Reservation>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "listReservationByUserId", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.reservations.ListReservationByUserId")
+    @ResponseWrapper(localName = "listReservationByUserIdResponse", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.reservations.ListReservationByUserIdResponse")
+    @Action(input = "http://webapp.libraryservice.projet.org/ReservationWS/listReservationByUserIdRequest", output = "http://webapp.libraryservice.projet.org/ReservationWS/listReservationByUserIdResponse")
+    public List<Reservation> listReservationByUserId(
+        @WebParam(name = "arg0", targetNamespace = "")
+        int arg0);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns org.projet.library.model.reservations.Reservation
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getReservationByIdLivreAndPosition", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.reservations.GetReservationByIdLivreAndPosition")
+    @ResponseWrapper(localName = "getReservationByIdLivreAndPositionResponse", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.reservations.GetReservationByIdLivreAndPositionResponse")
+    @Action(input = "http://webapp.libraryservice.projet.org/ReservationWS/getReservationByIdLivreAndPositionRequest", output = "http://webapp.libraryservice.projet.org/ReservationWS/getReservationByIdLivreAndPositionResponse")
+    public Reservation getReservationByIdLivreAndPosition(
+        @WebParam(name = "arg0", targetNamespace = "")
+        int arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        int arg1);
+
+    /**
+     * 
+     * @param arg0
+     */
+    @WebMethod
     @RequestWrapper(localName = "insertReservation", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.reservations.InsertReservation")
     @ResponseWrapper(localName = "insertReservationResponse", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.reservations.InsertReservationResponse")
     @Action(input = "http://webapp.libraryservice.projet.org/ReservationWS/insertReservationRequest", output = "http://webapp.libraryservice.projet.org/ReservationWS/insertReservationResponse")
@@ -65,6 +110,21 @@ public interface ReservationWS {
      * 
      * @param arg0
      * @return
+     *     returns java.util.List<org.projet.library.model.reservations.Reservation>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getReservationsByIdLivre", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.reservations.GetReservationsByIdLivre")
+    @ResponseWrapper(localName = "getReservationsByIdLivreResponse", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.reservations.GetReservationsByIdLivreResponse")
+    @Action(input = "http://webapp.libraryservice.projet.org/ReservationWS/getReservationsByIdLivreRequest", output = "http://webapp.libraryservice.projet.org/ReservationWS/getReservationsByIdLivreResponse")
+    public List<Reservation> getReservationsByIdLivre(
+        @WebParam(name = "arg0", targetNamespace = "")
+        int arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
      *     returns org.projet.library.model.reservations.Reservation
      */
     @WebMethod
@@ -73,36 +133,6 @@ public interface ReservationWS {
     @ResponseWrapper(localName = "getReservationResponse", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.reservations.GetReservationResponse")
     @Action(input = "http://webapp.libraryservice.projet.org/ReservationWS/getReservationRequest", output = "http://webapp.libraryservice.projet.org/ReservationWS/getReservationResponse")
     public Reservation getReservation(
-        @WebParam(name = "arg0", targetNamespace = "")
-        int arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns java.util.List<org.projet.library.model.reservations.Reservation>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "listReservationByUserId", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.reservations.ListReservationByUserId")
-    @ResponseWrapper(localName = "listReservationByUserIdResponse", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.reservations.ListReservationByUserIdResponse")
-    @Action(input = "http://webapp.libraryservice.projet.org/ReservationWS/listReservationByUserIdRequest", output = "http://webapp.libraryservice.projet.org/ReservationWS/listReservationByUserIdResponse")
-    public List<Reservation> listReservationByUserId(
-        @WebParam(name = "arg0", targetNamespace = "")
-        int arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns java.util.List<org.projet.library.model.reservations.Reservation>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getPosition", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.reservations.GetPosition")
-    @ResponseWrapper(localName = "getPositionResponse", targetNamespace = "http://webapp.libraryservice.projet.org/", className = "org.projet.library.model.reservations.GetPositionResponse")
-    @Action(input = "http://webapp.libraryservice.projet.org/ReservationWS/getPositionRequest", output = "http://webapp.libraryservice.projet.org/ReservationWS/getPositionResponse")
-    public List<Reservation> getPosition(
         @WebParam(name = "arg0", targetNamespace = "")
         int arg0);
 
