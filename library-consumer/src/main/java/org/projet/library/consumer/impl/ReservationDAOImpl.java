@@ -59,12 +59,19 @@ public class ReservationDAOImpl implements ReservationDAO {
 		return reservation;
 	}
 
-	public List<Reservation> getReservationByIdLivreAndPosition(int id, int position) {
+	public Reservation getReservationByIdLivreAndPosition(int id, int position) {
 
 		ReservationWS stub = new ReservationWS_Service().getReservationWSPort();
 		
-		List<Reservation> reservation = stub.getReservationByIdLivreAndPosition(id, position);
+		Reservation reservation = stub.getReservationByIdLivreAndPosition(id, position);
 		
 		return reservation;
+	}
+
+	public void updateReservation(Reservation reservation) {
+	
+		ReservationWS stub = new ReservationWS_Service().getReservationWSPort();
+		
+		stub.updateReservation(reservation);		
 	}
 }
