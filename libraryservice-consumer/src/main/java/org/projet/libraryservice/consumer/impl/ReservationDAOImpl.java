@@ -25,11 +25,13 @@ public class ReservationDAOImpl extends AbstractDaoImpl implements ReservationDA
 
 	public void insertReservation(Reservation reservation) {
 		
-		String vSQL = "INSERT INTO reservation (date_reservation, etat, id_utilisateur, id_livre) VALUES (:date_reservation,:etat,:id_utilisateur,:id_livre)";
+		String vSQL = "INSERT INTO reservation (date_reservation, position, etat, id_utilisateur, id_livre) VALUES (:date_reservation,:position,:etat,:id_utilisateur,:id_livre)";
 		
 		MapSqlParameterSource vParams = new MapSqlParameterSource();
 		vParams.addValue("date_reservation", reservation.getDatereservation(), Types.DATE);
+		vParams.addValue("position", reservation.getPosition(), Types.INTEGER);
 		vParams.addValue("etat", reservation.getEtat(), Types.VARCHAR);
+		//vParams.addValue("date_envoi_mail", reservation.getDatemail(), Types.DATE);
 		vParams.addValue("id_utilisateur", reservation.getId_user(), Types.INTEGER);
 		vParams.addValue("id_livre", reservation.getId_livre(), Types.INTEGER);
 		
@@ -112,7 +114,7 @@ public class ReservationDAOImpl extends AbstractDaoImpl implements ReservationDA
 	}
 
 	@Override
-	public List<Reservation> getReservationByIdLivreAndPosition(int id, int position) {
+	public Reservation getReservationByIdLivreAndPosition(int id, int position) {
 
 		String vSQL = "SELECT * FROM reservation WHERE id_livre=:id_livre AND position=:position";
 		
@@ -120,6 +122,43 @@ public class ReservationDAOImpl extends AbstractDaoImpl implements ReservationDA
 		
 		List<Reservation> reservation = getJdbcTemplate().query(vSQL, vRowMapper);
 		
-		return reservation;
+		return reservation.get(0);
+	}
+
+	@Override
+	public void updateReservation(Reservation reservation) {
+		
+		String vSQL = "UPDATE reservation SET date_reservation= :date_reservation, position= :position, etat= :etat WHERE id_reservation= :id_reservation";
+		
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("date_reservation", reservation.getDatereservation(), Types.DATE);
+		vParams.addValue("position", reservation.getPosition(), Types.INTEGER);
+		vParams.addValue("etat", reservation.getEtat(), Types.VARCHAR);
+		
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+
+		try {
+			vJdbcTemplate.update(vSQL, vParams);
+		} catch (DuplicateKeyException vEx) {
+
+		}		
+	}
+
+	@Override
+	public int getReservationByPositionId(int id) {
+	
+		String vSQL = "SELECT position FROM reservation WHERE id_reservation=:id_reservation";
+		
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("id_reservation", id, Types.INTEGER);
+		
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+		
+		Integer value = vJdbcTemplate.queryForObject(vSQL, vParams, Integer.class);
+		
+		if (value == null) {
+			value = 0;
+		}
+		return value;
 	}
 }
