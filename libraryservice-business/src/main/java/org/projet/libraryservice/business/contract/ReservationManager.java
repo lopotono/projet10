@@ -18,5 +18,7 @@ public interface ReservationManager {
 	
 	List<Reservation> getReservationsByIdLivre(int id);
 	
-	List<Reservation> getReservationByIdLivreAndPosition(int id, int position);
+	Reservation getReservationByIdLivreAndPosition(int id, int position);
+	
+	void updateReservation(Reservation reservation);
 }
