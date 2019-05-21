@@ -28,6 +28,7 @@ CREATE TABLE public.utilisateur (
                 ville VARCHAR NOT NULL,
                 mot_de_passe VARCHAR NOT NULL,
                 mail VARCHAR NOT NULL,
+                option BOOLEAN,
                 CONSTRAINT utilisateur_pk PRIMARY KEY (id_utilisateur)
 );
 
@@ -36,13 +37,12 @@ ALTER SEQUENCE public.utilisateur_id_utilisateur_seq OWNED BY public.utilisateur
 
 CREATE SEQUENCE public.reservation_id_reservation_seq;
 
-CREATE SEQUENCE public.reservation_position_seq;
-
 CREATE TABLE public.reservation (
                 id_reservation INTEGER NOT NULL DEFAULT nextval('public.reservation_id_reservation_seq'),
                 date_reservation DATE NOT NULL,
-                position INTEGER NOT NULL DEFAULT nextval('public.reservation_position_seq'),
+                position INTEGER NOT NULL,
                 etat VARCHAR NOT NULL,
+                date_envoi_mail DATE,
                 id_utilisateur INTEGER NOT NULL,
                 id_livre INTEGER NOT NULL,
                 CONSTRAINT reservation_pk PRIMARY KEY (id_reservation)
@@ -50,8 +50,6 @@ CREATE TABLE public.reservation (
 
 
 ALTER SEQUENCE public.reservation_id_reservation_seq OWNED BY public.reservation.id_reservation;
-
-ALTER SEQUENCE public.reservation_position_seq OWNED BY public.reservation.position;
 
 CREATE SEQUENCE public.pret_id_pret_seq;
 
