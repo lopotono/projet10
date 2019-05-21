@@ -68,7 +68,7 @@ public class LivreDAOImpl extends AbstractDaoImpl implements LivreDAO {
 	@Override
 	public List<Livre> getLivresDisponibles() {
 		
-		String vSQL = "SELECT * FROM livre WHERE disponible=true";
+		String vSQL = "SELECT * FROM livre WHERE disponible=false";
 		
 		LivreRowMapper vRowMapper = new LivreRowMapper();
 		
