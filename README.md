@@ -4,12 +4,12 @@
 
 ### Déploiement de l'application avec Docker :
 
-** Créer le fichier datasource.properties :
+#### Créer le fichier datasource.properties :
 
-*url=jdbc:postgresql://localhost:5432/db_library_reservations
-*driverClassName=org.postgresql.Driver
-*username=postgres
-*password=innelec
+**url=jdbc:postgresql://localhost:5432/db_library_reservations
+**driverClassName=org.postgresql.Driver
+**username=postgres
+**password=innelec
 
 ** Créer le fichier application.properties pour le batch :
 
