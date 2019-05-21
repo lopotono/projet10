@@ -1,21 +1,49 @@
-Cette application est un système d'information d'une bibliothèque d'une grande ville.
+# Améliorez le système d'information de la bibliothèque
 
-Cette application est destinée aux usagers pour rechercher des livres et voir le nombre d'exemplaires disponibles, de suivre leurs prêts en cours et de pouvoir prolonger le prêt d'un ouvrage qu'une seule fois.
+### Ajout de nouvelles fonctionnalités pour cette application
 
+### Déploiement de l'application avec Docker :
 
+#### Créer le fichier datasource.properties :
 
-*Configuration du serveur Tomcat :
-La configuration du serveur s'effectue dans l'IDE Eclipse ; Configuration du path ; Configuration du Server Runtime Environnement : Apache Tomcat v8.5 et récupération du fichier d'installation Tomcat à la racine du disque dur de l'ordinateur. Le serveur est déployé en local sur le port http://localhost:8080.
+- url=jdbc:postgresql://localhost:5432/db_library_reservations
 
-*Déploiement de l'application :
-Compilation des sources du projet avec la commande en console mvn compile. Génération d'un fichier WAR pour le déploiement de l'application web. Ajout du plugin maven-war-plugin dans le pom.xml parent du projet. On pourra réaliser un export pour créer un fichier WAR sous l'IDE Eclipse ou packager en ligne de commande dans la console : mvn package. Les codes source de l'application se situent pour chaques modules dans src/main/java.
+- driverClassName=org.postgresql.Driver
 
-*La base de données nommée db_library est stockée sur le serveur pgadminIII. 
-URL : jdbc:postgresql://localhost:5432/db_library
+- username=postgres
 
-*Le web service utilise le serveur GlassFish pour le déploiement des différents services, 
-accessible avec l'URL : http://localhost:4848
+- password=innelec
 
-*Module batch : fichier jar : library-batch-1.0-SNAPSHOT.jar
-Le batch envoie un mail de relance tous les jours à l'utilisateur qui n'a pas rendu le livre à temps.
-java -jar library-batch-1.0-SNAPSHOT.jar
+#### Créer le fichier application.properties pour le batch :
+
+- spring.mail.host=smtp.gmail.com
+
+- spring.mail.port=587
+
+- spring.mail.username=terragef@gmail.com	
+
+- spring.mail.password=Innelec_27
+
+- spring.mail.protocol=smtp
+
+- spring.mail.test-connection=false
+
+- spring.mail.default-encoding=UTF-8
+
+- #mail properties
+
+- spring.mail.properties.mail.smtp.auth=true
+
+- spring.mail.properties.mail.smtp.starttls.enable=true
+
+- spring.datasource.url=jdbc:postgresql://localhost:5432/db_library_reservations
+
+- spring.main.allow-bean-definition-overriding=true
+
+#### Démarrage de Docker et de la base de données :
+
+ - sudo service docker start (daemon de Linux)
+ 
+ - sudo docker-compose f docker-compose.yml up
+ 
+ - docker exec -it "numéro du container" psql U postgres db_library_reservations
