@@ -43,19 +43,19 @@ VALUES
 --- utilisateur								
 --- ================================================================================
 INSERT INTO public.utilisateur
-(nom, prenom, adresse, code_postal, ville, mot_de_passe, mail)
+(nom, prenom, adresse, code_postal, ville, mot_de_passe, mail, option)
 VALUES
-('ROUX', 'Jeanne', '4 rue de la Tour', 75019, 'PARIS', 'defdg45862', 'roux.j@orange.fr'),
-('LEROY', 'Merlin', '95 avenue du Général de Gaulle', 77400, 'MELUN', 'goHome', 'leroy.merlin@orange.fr'),
-('GIRARD', 'Caroline', '105 avenue de la victoire', 93100, 'PANTIN', 'labas', 'gi.car@free.fr'),
-('FOURNIER', 'Denis', '72 rue des belles fleurs', 13100, 'MARSEILLE', 'boulanger', 'fournier.denis@free.fr'),
-('SAPIN', 'Jacques', '56 rue du Commandant Arnaud', 77250, 'COULOMMIERS', '14789563*+k', 'sapin.jack@orange.fr'),
-('DUPONT', 'Roger', '2 rue des champs', 75019, 'PARIS', 'bftg12', 'roger.dup@orange.fr'),
-('MACRON', 'Albert', '26 avenue du Général de Gaulle', 77300, 'CHELLES', 'AdieuLami', 'macron.albert@orange.fr'),
-('FONTON', 'Alain', '85 avenue de la victoire', 93100, 'PANTIN', '1478hu', 'fonton.alain@orange.fr'),
-('LEE', 'Paul', '2 rue Trevet', 93100, 'AUBERVILLIERS', 'popo', 'lee.paul@free.fr'),
-('AUTINO', 'Monique', '30 rue du Commandant Arnaud', 77000, 'MELUN', 'pourquoipas', 'autino.monique@orange.fr'),
-('TERRAGE', 'Frédéric', '75 Avenue de Gaulle', 93140, 'BONDY', 'astro', 'terragef@gmail.com');
+('ROUX', 'Jeanne', '4 rue de la Tour', 75019, 'PARIS', 'defdg45862', 'roux.j@orange.fr', null),
+('LEROY', 'Merlin', '95 avenue du Général de Gaulle', 77400, 'MELUN', 'goHome', 'leroy.merlin@orange.fr', null),
+('GIRARD', 'Caroline', '105 avenue de la victoire', 93100, 'PANTIN', 'labas', 'gi.car@free.fr', null),
+('FOURNIER', 'Denis', '72 rue des belles fleurs', 13100, 'MARSEILLE', 'boulanger', 'fournier.denis@free.fr', null),
+('SAPIN', 'Jacques', '56 rue du Commandant Arnaud', 77250, 'COULOMMIERS', '14789563*+k', 'sapin.jack@orange.fr', null),
+('DUPONT', 'Roger', '2 rue des champs', 75019, 'PARIS', 'bftg12', 'roger.dup@orange.fr', null),
+('MACRON', 'Albert', '26 avenue du Général de Gaulle', 77300, 'CHELLES', 'AdieuLami', 'macron.albert@orange.fr', null),
+('FONTON', 'Alain', '85 avenue de la victoire', 93100, 'PANTIN', '1478hu', 'fonton.alain@orange.fr', null),
+('LEE', 'Paul', '2 rue Trevet', 93100, 'AUBERVILLIERS', 'popo', 'lee.paul@free.fr', null),
+('AUTINO', 'Monique', '30 rue du Commandant Arnaud', 77000, 'MELUN', 'pourquoipas', 'autino.monique@orange.fr', null),
+('TERRAGE', 'Frédéric', '75 Avenue de Gaulle', 93140, 'BONDY', 'astro', 'terragef@gmail.com', null);
 
 
 --- ================================================================================								
