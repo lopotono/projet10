@@ -1,6 +1,8 @@
 package org.projet.library.batch;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.projet.library.business.contract.ManagerFactory;
@@ -49,15 +51,18 @@ public class Application {
 
 	@Scheduled(cron = "*/1 * * * * ?")
 	public void doMail() {
-		// Récupérer les livres disponibles
+		// Récupérer les livres non disponibles
 		List<Livre> listlivresdispo = mf.getLivreManager().getLivresDisponibles();
 		for (Livre livredispo : listlivresdispo) {
 			// Récupérer la liste des réservations par livre
 			List<Reservation> listreservation = mf.getReservationManager()
 					.getReservationsByIdLivre(livredispo.getLivreid());
+			System.out.println(livredispo.getTitre());
 			for (Reservation resa : listreservation) {
+				System.out.println(resa.getIdLivre());
 				// Utilisateur avec la position 1
 				if (resa.getPosition() == 1) {
+					System.out.println(resa.getPosition());
 					Calendar dateJour = Calendar.getInstance();
 					// Si le mail n'est pas envoyé
 					if (resa.getDatemail() == null) {
@@ -68,6 +73,7 @@ public class Application {
 						// Si les 48 heures ne sont pas encore passées
 						Calendar datelimite = resa.getDatemail();
 						datelimite.add(Calendar.DATE, 2);
+						System.out.println(datelimite);
 						if (datelimite.compareTo(dateJour) < 0) {
 							// Si 48 heures sont passées : supprimer la réservation
 							mf.getReservationManager().deleteReservation(resa);
@@ -84,7 +90,7 @@ public class Application {
 	private void sendMail(Reservation reservation) {
 
 		String subject = "Votre livre est disponible.";
-		String body = "Le livre " + reservation.getLivre().getTitre()
+		String body = "Le livre " + reservation.getIdLivre()
 				+ " est disponible à la bibliothèque. Vous disposez de 48 h pour venir le chercher, au-delà de cette période la réservation sera annulée.";
 
 		Calendar dateJour = Calendar.getInstance();
@@ -113,9 +119,12 @@ public class Application {
 				// Si les dates sont égales envoi du mail
 				if (datefin.compareTo(today) < 0) {
 					Livre livre = mf.getLivreManager().getLivre(pret.getIdLivre());
+					datefin.add(Calendar.DATE, +5);
+					Date date = datefin.getTime();
+					SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
 					String subject = "Rappel de fin de prêt.";
-					String body = "Vous recevez ce mail parce que vous avez activé le rappel automatique de fin de prêt (5 jours avant le terme du prêt)."
-							+ "Liste de vos prêts : " + livre.getTitre() + "Date de fin de prêt : " + pret.getDatefin();
+					String body = "Vous recevez ce mail parce que vous avez activé le rappel automatique de fin de prêt (5 jours avant le terme du prêt). "
+							+ " Le livre : " + livre.getTitre() + " et la date de fin de prêt est le : " + formatDate.format(date);
 					ms.sendMail("terragef@gmail.com", user.getMail(), subject, body);
 				}
 			}
