@@ -38,7 +38,6 @@ public class Application {
 	}
 
 	@Scheduled(cron = "0 */1 * * * ?")
-
 	public void schedule() {
 		List<Pret> list = mf.getPretManager().getPretLate();
 		for (Pret pret : list) {
@@ -89,10 +88,10 @@ public class Application {
 
 	private void sendMail(Reservation reservation) {
 
+		Livre livre = mf.getLivreManager().getLivre(reservation.getIdLivre());
 		String subject = "Votre livre est disponible.";
-		String body = "Le livre " + reservation.getIdLivre()
+		String body = "Le livre " + livre.getTitre()
 				+ " est disponible à la bibliothèque. Vous disposez de 48 h pour venir le chercher, au-delà de cette période la réservation sera annulée.";
-
 		Calendar dateJour = Calendar.getInstance();
 		System.out.println(dateJour);
 		reservation.setDatemail(dateJour);
