@@ -68,10 +68,13 @@ public class ProlongationAction extends AbstractAction {
 			date.add(Calendar.DATE, nb);
 			pret.setProlongation(true);
 			pret.setEtat("prêt prolongé");
+			addActionMessage("Vous avez prolongé votre prêt de 15 jours !");
 		// Condition pour comparer avant la date de fin de prêt	
 		} else if (date.before(now)) {
 			pret.setEtat("en cours");
 			pret.setProlongation(false);
+			addActionMessage("Vous ne pouvez plus prolonger le prêt !");
+			return ActionSupport.SUCCESS;
 		}
 		// Appel de la méthode update
 		getManagerFactory().getPretManager().update(pret);
