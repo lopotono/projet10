@@ -8,18 +8,11 @@
 			<result>index.jsp</result>
 		</action>
 
-		<!-- Action listant les livres -->
+		<!-- Action listant les livres avec réservation -->
 		<action name="livres_list"
 			class="org.projet.library.webapp.action.ListLivresAction"
 			method="doList">
 			<result name="success">livres/listelivres.jsp</result>
-		</action>
-
-		<!-- Action recherche livre -->
-		<action name="search_livre"
-			class="org.projet.library.webapp.action.SearchAction" method="search">
-			<result name="input">index.jsp</result>
-			<result name="success">result.jsp</result>
 		</action>
 
 		<!-- Action listant les prêts -->
@@ -28,7 +21,7 @@
 			method="listPret">
 			<result name="success">livres/listeprets.jsp</result>
 		</action>
-
+		
 		<!-- Action login/logout -->
 		<action name="login"
 			class="org.projet.library.webapp.action.LoginAction" method="doLogin">
@@ -40,6 +33,13 @@
 			method="doLogout">
 			<result type="redirectAction">index</result>
 		</action>
+		
+		<!-- Action réserver livre -->
+		<action name="reserverLivre"
+			class="org.projet.library.webapp.action.ReserverAction" method="execute">
+			<result name="success" type="redirectAction">listeresa</result>
+			<result name="error" type="redirectAction">livres_list</result>
+		</action>
 
 		<!-- Action date de prolongation -->
 		<action name="datepro"
@@ -48,6 +48,26 @@
 			<result name="input">livres/listeprets.jsp</result>
 			<result name="success" type="redirectAction">pret_list</result>
 		</action>
+				
+		<!-- Action annuler réservation -->
+		<action name="annuler"
+			class="org.projet.library.webapp.action.AnnulerAction"
+			method="execute">
+			<result name="success" type="redirectAction">listeresa</result>
+		</action>
+						
+		<!-- Action envoyer mail de rappel -->
+		<action name="rappel"
+			class="org.projet.library.webapp.action.RappelAction"
+			method="execute">
+			<result name="success">livres/listeprets.jsp</result>
+		</action>
 		
+		<!-- Action liste des réservations -->
+		<action name="listeresa"
+			class="org.projet.library.webapp.action.ListResaAction"
+			method="execute">
+			<result name="success">reservations/listReservation.jsp</result>
+		</action>
 	</package>
 </struts>
