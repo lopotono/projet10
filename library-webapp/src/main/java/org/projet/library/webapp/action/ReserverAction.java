@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
+import org.projet.library.model.prets.Pret;
 import org.projet.library.model.reservations.Livre;
 import org.projet.library.model.reservations.Reservation;
 import org.projet.library.model.users.User;
@@ -14,13 +15,14 @@ import com.opensymphony.xwork2.ActionSupport;
 public class ReserverAction extends AbstractAction implements SessionAware {
 
 	private static final long serialVersionUID = 3672597566981260465L;
-	
+
 	private int id;
 	private Map<String, Object> session;
 	private int livreid;
 	private User vUser;
 	private List<Reservation> listReservation;
 	private Livre livre;
+	private List<Pret> listPret;
 
 	public int getId() {
 		return id;
@@ -67,13 +69,21 @@ public class ReserverAction extends AbstractAction implements SessionAware {
 	public void setLivre(Livre livre) {
 		this.livre = livre;
 	}
+	
+	public List<Pret> getListPret() {
+		return listPret;
+	}
+	
+	public void setListPret(List<Pret> listPret) {
+		this.listPret = listPret;
+	}
 
 	public String execute() {
 
 		String vResult = ActionSupport.INPUT;
-		
+
 		// Récupérer id du livre
-		org.projet.library.model.livres.Livre livre = getManagerFactory().getLivreManager().getLivre(livreid);
+		org.projet.library.model.livre.Livre livre = getManagerFactory().getLivreManager().getLivre(livreid);
 		Livre livre2 = transforme(livre);
 		Reservation reservation = new Reservation();
 		// Récupérer la date du jour (datereservation)
@@ -89,22 +99,28 @@ public class ReserverAction extends AbstractAction implements SessionAware {
 		// Récupérer id utilisateur
 		reservation.setIdUser(vUser.getId());
 		listReservation = getManagerFactory().getReservationManager().listReservationByUserId(vUser.getId());
-		for (Reservation resa : listReservation) {
+		for (Reservation resa : listReservation) {		
 			if (reservation.getIdLivre() == resa.getIdLivre()) {
 				addActionError("Vous avez déjà réservé ce livre : " + livre.getTitre());
+				return ActionSupport.ERROR;
+			}
+		}
+		listPret = getManagerFactory().getPretManager().listPretByUserId(vUser.getId());
+		for (Pret pretlist : listPret) {
+			if (pretlist.getIdLivre() == reservation.getIdLivre()) {
+				addActionError("Vous avez emprunté ce livre : " + livre.getTitre() + ". Vous ne pouvez pas le réserver !");
 				return ActionSupport.ERROR;
 			}
 		}
 		// Insertion des données (état, date du jour, id livre et id user) dans la table
 		// réservation
 		getManagerFactory().getReservationManager().insertReservation(reservation);
-		
-		addActionMessage("Vous avez réservé le livre : " + livre.getTitre() + " de " + livre.getAuteur());
+		addActionMessage("Vous avez réservé le livre : " + livre.getTitre() + " de " + livre.getAuteur());		
 		vResult = ActionSupport.SUCCESS;
 		return vResult;
 	}
 
-	private Livre transforme(org.projet.library.model.livres.Livre livre) {
+	private Livre transforme(org.projet.library.model.livre.Livre livre) {
 
 		Livre livre2 = new Livre();
 		livre2.setLivreid(livre.getLivreid());
